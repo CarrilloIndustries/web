@@ -16,5 +16,23 @@
     "reference": "Original concept (no layout reference)",
     "added": "2026-11-21",
     "thumb": "thumbs/laps-hvac.jpg"
+  },
+  {
+    "slug": "graticule",
+    "type": "site",
+    "title": "Graticule",
+    "industry": "Open-source engineering software",
+    "style": ["technical", "dark", "animated"],
+    "summary": "A product site for a fictional open-source suite of electronics bench apps, with live scope-style animations and a team plan.",
+    "features": [
+      "Live four-channel scope traces with phosphor trails behind the hero",
+      "Eight canvas-drawn app screens: scope, logic, FFT, Bode, PCB and more",
+      "Scroll-spy side rail with a trigger-style progress ruler, plus light/dark themes",
+      "Remote-bench dashboard, pricing toggle and a validated signup form"
+    ],
+    "path": "sites/graticule/",
+    "reference": "Layout studied: getartcraft.com",
+    "added": "2026-11-21",
+    "thumb": "thumbs/graticule.jpg"
   }
 ]
