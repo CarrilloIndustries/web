@@ -34,5 +34,23 @@
     "reference": "Layout studied: getartcraft.com",
     "added": "2026-11-21",
     "thumb": "thumbs/graticule.jpg"
+  },
+  {
+    "slug": "plumbline",
+    "type": "site",
+    "title": "Plumbline",
+    "industry": "Crypto infrastructure",
+    "style": ["bold", "technical", "animated"],
+    "summary": "A website for a fictional crypto data network, with a rotating hero headline, animated illustrations, simulated live numbers and working menus, search and forms.",
+    "features": [
+      "Rotating hero headline over a live animated node network",
+      "Isometric platform illustration with a swaying plumb bob and flowing data",
+      "Ticking value counter and a simulated live feed monitor",
+      "Mega menus, keyboard search, tabbed use cases and a validated contact dialog"
+    ],
+    "path": "sites/plumbline/",
+    "reference": "Layout studied: chain.link",
+    "added": "2026-11-21",
+    "thumb": "thumbs/plumbline.jpg"
   }
 ]
