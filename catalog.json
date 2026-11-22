@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "slug": "laps-hvac",
+    "type": "site",
+    "title": "LAPS HVAC",
+    "industry": "HVAC contractor",
+    "style": ["bold", "dark", "animated"],
+    "summary": "A heating and cooling company site with animated building cutaways and an instant online quote.",
+    "features": [
+      "Animated home and commercial cutaways showing airflow and techs at work",
+      "Mouse-reactive airflow background",
+      "Instant quote calculator with live price breakdown",
+      "Contact info up front, plus a validated contact form"
+    ],
+    "path": "sites/laps-hvac/",
+    "reference": "Original concept (no layout reference)",
+    "added": "2026-11-21",
+    "thumb": "thumbs/laps-hvac.jpg"
+  }
+]
