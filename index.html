@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cameron Carrillo · Websites and Web Tools</title>
+<meta name="description" content="Websites and interactive web tools designed and built by Cameron Carrillo. Every piece is a working build for a fictional brand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: an engineering drawing sheet. Grid-paper ground, wide display type, a title block as the footer. */
+:root {
+  --paper: #F2F4F6;
+  --sheet: #FFFFFF;
+  --ink: #16233A;
+  --soft: #536079;
+  --rule: #D3DAE3;
+  --grid: rgba(22, 35, 58, 0.055);
+  --mark: #D4461A;
+  --mark-ink: #FFFFFF;
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0C121B; --sheet: #131B27; --ink: #E3E9F0; --soft: #98A5B7; --rule: #253145;
+    --grid: rgba(227, 233, 240, 0.05); --mark: #FF7447; --mark-ink: #1A0A04;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body {
+  margin: 0; background-color: var(--paper); color: var(--ink);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  font-family: var(--display); font-size: 17px; line-height: 1.55;
+}
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--mark); outline-offset: 3px; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: 20px; }
+.label { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+
+/* Top bar */
+.bar { border-bottom: 1px solid var(--rule); background: var(--sheet); }
+.bar .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 14px; flex-wrap: wrap; }
+.mark { font-weight: 800; font-stretch: 125%; letter-spacing: .02em; text-decoration: none; font-size: 15px; }
+.mark span { color: var(--mark); }
+.bar nav { display: flex; gap: 22px; font-size: 15px; }
+.bar nav a { text-decoration: none; color: var(--soft); }
+.bar nav a:hover { color: var(--ink); }
+
+/* Hero */
+.hero { padding-block: 72px 56px; display: grid; gap: 22px; }
+.hero h1 { margin: 0; font-weight: 800; font-stretch: 112%; font-size: clamp(38px, 6.4vw, 76px); line-height: 1.02; letter-spacing: -.01em; max-width: 15ch; text-wrap: balance; }
+.hero h1 em { font-style: normal; color: var(--mark); }
+.hero p { margin: 0; max-width: 60ch; font-size: 19px; color: var(--soft); }
+.ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 4px; font-weight: 600; text-decoration: none; border: 1.5px solid var(--ink); }
+.btn.primary { background: var(--mark); border-color: var(--mark); color: var(--mark-ink); }
+.btn:hover { transform: translateY(-1px); }
+
+/* Work */
+section { scroll-margin-top: 20px; }
+.head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; border-top: 2px solid var(--ink); padding-top: 14px; margin-bottom: 22px; }
+.head h2 { margin: 0; font-weight: 800; font-stretch: 125%; font-size: 30px; line-height: 1.1; }
+.filters { display: flex; gap: 6px; flex-wrap: wrap; }
+.filters button { font: inherit; font-family: var(--mono); font-size: 13px; padding: 6px 12px; border: 1px solid var(--rule); background: var(--sheet); color: var(--soft); border-radius: 999px; cursor: pointer; }
+.filters button[aria-pressed="true"] { background: var(--ink); color: var(--sheet); border-color: var(--ink); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 22px; }
+.card { display: grid; grid-template-rows: auto 1fr; background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; text-decoration: none; transition: transform .15s ease, border-color .15s ease; }
+.card:hover { transform: translateY(-3px); border-color: var(--ink); }
+.thumb { aspect-ratio: 16 / 10; width: 100%; display: block; object-fit: cover; object-position: top; border-bottom: 1px solid var(--rule); background: var(--paper); }
+.tile { aspect-ratio: 16 / 10; border-bottom: 1px solid var(--rule); position: relative; display: grid; align-content: end; padding: 18px; color: #fff;
+  background-image: linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px);
+  background-size: 20px 20px; }
+.tile b { font-weight: 800; font-stretch: 118%; font-size: 26px; line-height: 1.05; text-wrap: balance; }
+.tile i { position: absolute; top: 14px; left: 18px; font-style: normal; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; opacity: .85; }
+.body { padding: 16px 18px 18px; display: grid; gap: 8px; align-content: start; }
+.body h3 { margin: 0; font-weight: 700; font-stretch: 110%; font-size: 21px; line-height: 1.15; }
+.body p { margin: 0; font-size: 15px; color: var(--soft); }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 2px; }
+.tags span { font-family: var(--mono); font-size: 11.5px; padding: 2px 8px; border: 1px solid var(--rule); border-radius: 999px; color: var(--soft); }
+.open { font-weight: 600; font-size: 15px; color: var(--mark); margin-top: 4px; }
+.empty { background: var(--sheet); border: 1.5px dashed var(--rule); border-radius: 6px; padding: 36px 24px; text-align: center; color: var(--soft); }
+.empty b { display: block; color: var(--ink); font-stretch: 112%; font-size: 21px; margin-bottom: 4px; }
+
+/* Approach */
+.approach { padding-block: 72px 24px; }
+.points { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 22px; }
+.point { border-top: 1px solid var(--rule); padding-top: 14px; }
+.point h3 { margin: 6px 0 6px; font-stretch: 112%; font-size: 21px; }
+.point p { margin: 0; color: var(--soft); font-size: 16px; }
+
+/* Title block footer */
+.titleblock { margin-top: 64px; margin-bottom: 40px; }
+.tb { display: grid; grid-template-columns: 2fr repeat(3, 1fr); border: 2px solid var(--ink); background: var(--sheet); }
+.tb > div { padding: 10px 14px; border-left: 1px solid var(--ink); min-width: 0; }
+.tb > div:first-child { border-left: 0; }
+.tb .v { font-weight: 700; font-stretch: 112%; font-size: 17px; overflow-wrap: anywhere; }
+.tb .note { grid-column: 1 / -1; border-left: 0; border-top: 1px solid var(--ink); font-size: 14px; color: var(--soft); }
+@media (max-width: 640px) {
+  .tb { grid-template-columns: 1fr 1fr; }
+  .tb > div:nth-child(3) { border-left: 0; }
+  .tb > div:nth-child(n+3):not(.note) { border-top: 1px solid var(--ink); }
+  .hero { padding-block: 48px 40px; }
+}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a class="mark" href="./">C.&nbsp;CARRILLO<span> /</span> WEB</a>
+    <nav aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="#approach">Approach</a>
+      <a href="https://www.linkedin.com/in/cameron-carrillo-446660215/" target="_blank" rel="noopener">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <span class="label">Cameron Carrillo · Web design and development</span>
+      <h1 id="hero-title">Websites that load fast, read well and <em>hold up.</em></h1>
+      <p>I'm an electrical engineer who designs and builds websites and small web tools for small businesses and hardware companies. Everything below is a working build for a fictional brand, so you can click through it the way your customers would.</p>
+      <div class="ctas">
+        <a class="btn primary" href="https://www.linkedin.com/in/cameron-carrillo-446660215/" target="_blank" rel="noopener">Start a project</a>
+        <a class="btn" href="#work">See the work</a>
+      </div>
+    </section>
+
+    <section id="work" aria-labelledby="work-title">
+      <div class="head">
+        <h2 id="work-title">Work</h2>
+        <div class="filters" role="group" aria-label="Filter work">
+          <button type="button" data-f="all" aria-pressed="true">All</button>
+          <button type="button" data-f="site" aria-pressed="false">Websites</button>
+          <button type="button" data-f="tool" aria-pressed="false">Tools</button>
+        </div>
+      </div>
+      <div class="grid" id="grid" aria-live="polite"></div>
+    </section>
+
+    <section id="approach" class="approach" aria-labelledby="approach-title">
+      <div class="head"><h2 id="approach-title">Approach</h2></div>
+      <div class="points">
+        <div class="point"><span class="label">01 · Code</span><h3>Built from scratch</h3><p>Hand-written HTML, CSS and JavaScript. No page-builder lock-in and no monthly theme fees.</p></div>
+        <div class="point"><span class="label">02 · Speed</span><h3>Fast and accessible</h3><p>Light enough for a phone on a weak signal, and usable with a keyboard or a screen reader.</p></div>
+        <div class="point"><span class="label">03 · Handoff</span><h3>Yours to keep</h3><p>You get the code and the hosting setup, documented, with no proprietary platform in the way.</p></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="wrap titleblock">
+  <div class="tb">
+    <div><span class="label">Drawn by</span><div class="v">Cameron Carrillo</div></div>
+    <div><span class="label">Sheet</span><div class="v">Portfolio index</div></div>
+    <div><span class="label">Items</span><div class="v" id="tb-count">0</div></div>
+    <div><span class="label">Rev</span><div class="v" id="tb-rev">—</div></div>
+    <div class="note">Every brand shown here is fictional. Each piece was designed and built from scratch as a portfolio concept.</div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var TYPE = { site: "Website", tool: "Web tool" };
+  var HUES = ["#2E63C9", "#C8441C", "#1E7D66", "#7A49C4", "#A87700", "#B4325F"];
+  var grid = document.getElementById("grid");
+  var items = [];
+  var current = "all";
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function hue(s) {
+    var h = 7;
+    for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
+    return HUES[h % HUES.length];
+  }
+  function card(it) {
+    var visual = it.thumb
+      ? '<img class="thumb" src="' + esc(it.thumb) + '" alt="Screenshot of ' + esc(it.title) + '" loading="lazy">'
+      : '<div class="tile" style="background-color:' + hue(it.slug || it.title || "") + '"><i>' + esc(TYPE[it.type] || "Project") + '</i><b>' + esc(it.title) + "</b></div>";
+    var tags = [it.industry].concat(it.style || []).filter(Boolean)
+      .map(function (t) { return "<span>" + esc(t) + "</span>"; }).join("");
+    return '<a class="card" href="' + esc(it.path) + '">' + visual +
+      '<div class="body"><span class="label">' + esc(TYPE[it.type] || "Project") + "</span>" +
+      "<h3>" + esc(it.title) + "</h3><p>" + esc(it.summary) + "</p>" +
+      '<div class="tags">' + tags + '</div><span class="open">Open the ' + (it.type === "tool" ? "tool" : "site") + " →</span></div></a>";
+  }
+  function render() {
+    var shown = items.filter(function (it) { return current === "all" || it.type === current; });
+    if (!items.length) {
+      grid.innerHTML = '<div class="empty"><b>The first pieces are on the bench.</b>New websites and tools are added every week.</div>';
+    } else if (!shown.length) {
+      grid.innerHTML = '<div class="empty"><b>Nothing here yet.</b>Try another filter.</div>';
+    } else {
+      grid.innerHTML = shown.map(card).join("");
+    }
+    document.getElementById("tb-count").textContent = items.length;
+    var latest = items.reduce(function (a, it) { return (it.added || "") > a ? it.added : a; }, "");
+    document.getElementById("tb-rev").textContent = latest || "—";
+  }
+  document.querySelectorAll(".filters button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      current = b.getAttribute("data-f");
+      document.querySelectorAll(".filters button").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+      render();
+    });
+  });
+  fetch("catalog.json", { cache: "no-store" })
+    .then(function (r) { return r.ok ? r.json() : []; })
+    .catch(function () { return []; })
+    .then(function (data) {
+      items = (Array.isArray(data) ? data : []).slice().sort(function (a, b) { return (b.added || "").localeCompare(a.added || ""); });
+      render();
+    });
+  render();
+})();
+</script>
+</body>
+</html>
