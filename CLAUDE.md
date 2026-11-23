@@ -2,7 +2,7 @@
 
 This repo is Cameron Carrillo's public portfolio of websites and web tools. GitHub Pages serves `main` from the repo root at https://carrilloindustries.com/web/. Prospective clients browse it to see what working with Cameron gets them, so every piece must look and behave like real, finished client work.
 
-`index.html` is Cameron's real marketing site: services, process, rates, about and a contact form. Its Work section reads `catalog.json`, so you never need to edit it to add an item. Leave `index.html` and `assets/` alone unless the routine prompt asks for a change there. The contact form on that page is real and sends to Cameron's inbox. The forms in `sites/` and `tools/` never submit anywhere.
+`index.html` is Cameron's real marketing site: services, process, rates, about and a contact form. Its Work section reads `catalog.json`, so you never need to edit it to add an item. Leave `index.html`, `assets/` and `apps-script/` alone unless the routine prompt asks for a change there. The contact form on that page is real: it posts to the Apps Script in `apps-script/`, which emails Cameron. The forms in `sites/` and `tools/` never submit anywhere.
 
 ## Originality (non-negotiable)
 

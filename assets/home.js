@@ -278,9 +278,9 @@
     });
   });
 
-  /* Contact form. Validates in the browser, then posts to the form service in data-endpoint
-     (a Formspree form URL). Until an endpoint is set, it opens the visitor's email app instead,
-     with the message filled in. */
+  /* Contact form. Validates in the browser, then posts to the Google Apps Script web app in
+     data-endpoint (source in apps-script/contact-form.gs), which emails the message to Cameron.
+     Until an endpoint is set, it opens the visitor's email app instead, with the message filled in. */
   (function () {
     var form = doc.getElementById("contact-form");
     if (!form) return;
@@ -345,9 +345,12 @@
 
       submit.disabled = true;
       submit.textContent = "Sending…";
-      fetch(endpoint, { method: "POST", body: data, headers: { Accept: "application/json" } })
-        .then(function (r) {
-          if (!r.ok) throw new Error("HTTP " + r.status);
+      // A URL-encoded body with no custom headers keeps this a simple cross-origin request,
+      // which Apps Script accepts. It always answers with JSON: { ok: true } or { ok: false }.
+      fetch(endpoint, { method: "POST", body: new URLSearchParams(data) })
+        .then(function (r) { return r.json(); })
+        .then(function (res) {
+          if (!res || res.ok !== true) throw new Error(res && res.error);
           form.classList.add("sent");
           show("<b>Thanks, " + esc(name.split(/\s+/)[0]) + ".</b> Your message is on its way. I'll reply to " + esc(email) + ".", false);
           status.setAttribute("tabindex", "-1");
