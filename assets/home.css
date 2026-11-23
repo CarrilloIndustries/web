@@ -74,6 +74,9 @@ a { color: inherit; }
   .nav a[aria-current="true"] { color: var(--mark); border-bottom-color: var(--rule); }
   .nav .btn { margin-top: 16px; padding: 13px 16px; font-size: 16px; }
 }
+/* Narrower logo on phones so it fits beside the Menu button */
+@media (max-width: 480px) { .mark { font-stretch: 100%; font-size: 14px; letter-spacing: .01em; } }
+@media (max-width: 380px) { .mark { font-stretch: 80%; } }
 
 /* Hero: contour-line shader behind the copy, full bleed */
 .hero-band { position: relative; overflow: hidden; }

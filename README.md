@@ -1,6 +1,6 @@
 # Portfolio
 
-Cameron Carrillo's web design site and portfolio, published with GitHub Pages at https://cam-carrillo.github.io/portfolio/.
+Cameron Carrillo's web design site and portfolio, published with GitHub Pages at https://carrilloindustries.com/web/.
 
 The home page markets Cameron's web design and development work. Its Work section shows every sample site and tool in this repo. Every brand in the samples is fictional. Each website rebuilds a layout idea from a site with strong structure, written from scratch with original code, copy and imagery.
 

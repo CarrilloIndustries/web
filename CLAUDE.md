@@ -1,6 +1,6 @@
 # Portfolio build rules
 
-This repo is Cameron Carrillo's public portfolio of websites and web tools. GitHub Pages serves `main` from the repo root at https://cam-carrillo.github.io/portfolio/. Prospective clients browse it to see what working with Cameron gets them, so every piece must look and behave like real, finished client work.
+This repo is Cameron Carrillo's public portfolio of websites and web tools. GitHub Pages serves `main` from the repo root at https://carrilloindustries.com/web/. Prospective clients browse it to see what working with Cameron gets them, so every piece must look and behave like real, finished client work.
 
 `index.html` is Cameron's real marketing site: services, process, rates, about and a contact form. Its Work section reads `catalog.json`, so you never need to edit it to add an item. Leave `index.html` and `assets/` alone unless the routine prompt asks for a change there. The contact form on that page is real and sends to Cameron's inbox. The forms in `sites/` and `tools/` never submit anywhere.
 
@@ -25,7 +25,7 @@ Tools may borrow a reference tool's interaction model (for example, "press space
 - Websites: `sites/<slug>/index.html`, with any CSS, JS and assets inside that folder.
 - Tools: `tools/<slug>/index.html`, same rule.
 - No build step. Plain HTML, CSS and JS that work when GitHub Pages serves the folder.
-- Relative paths only: the site lives under `/portfolio/`, so a root-relative path like `/css/x.css` breaks.
+- Relative paths only: the site lives under `/web/`, so a root-relative path like `/css/x.css` breaks.
 - External scripts only when they do real work, and only from cdnjs.cloudflare.com or cdn.jsdelivr.net with a pinned version.
 - Each item has a small "← Portfolio" link back to `../../`.
 
