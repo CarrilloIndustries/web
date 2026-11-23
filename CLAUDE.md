@@ -2,7 +2,7 @@
 
 This repo is Cameron Carrillo's public portfolio of websites and web tools. GitHub Pages serves `main` from the repo root at https://cam-carrillo.github.io/portfolio/. Prospective clients browse it to see what working with Cameron gets them, so every piece must look and behave like real, finished client work.
 
-`index.html` is the gallery. It reads `catalog.json`; you never need to edit the gallery to add an item.
+`index.html` is Cameron's real marketing site: services, process, rates, about and a contact form. Its Work section reads `catalog.json`, so you never need to edit it to add an item. Leave `index.html` and `assets/` alone unless the routine prompt asks for a change there. The contact form on that page is real and sends to Cameron's inbox. The forms in `sites/` and `tools/` never submit anywhere.
 
 ## Originality (non-negotiable)
 
@@ -59,6 +59,7 @@ Append one object per finished item:
   "industry": "Engineering consultancy",
   "style": ["technical", "dark"],
   "summary": "One sentence a client would understand.",
+  "features": ["Up to four short highlights", "Each one a phrase, not a sentence"],
   "path": "sites/halyard-embedded/",
   "reference": "Layout studied: oxide.computer",
   "added": "YYYY-MM-DD",
@@ -66,7 +67,7 @@ Append one object per finished item:
 }
 ```
 
-`type` is `"site"` or `"tool"`. Use `"thumb": ""` when no screenshot could be made; the gallery falls back to a title card.
+`type` is `"site"` or `"tool"`. Use `"thumb": ""` when no screenshot could be made; the Work section falls back to a title card. The card shows up to four `features`. Never add `"featured"`: Cameron sets it to pin a favorite to the first six cards on the home page.
 
 ## Checks before each commit
 

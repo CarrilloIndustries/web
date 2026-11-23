@@ -1,173 +1,350 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cameron Carrillo · Websites and Web Tools</title>
-<meta name="description" content="Websites and interactive web tools designed and built by Cameron Carrillo. Every piece is a working build for a fictional brand.">
+<title>Cameron Carrillo · Web Design and Development</title>
+<meta name="description" content="Fast, accessible websites and web tools for small businesses and hardware companies, designed and built by electrical engineer Cameron Carrillo.">
+<link rel="canonical" href="https://cam-carrillo.github.io/portfolio/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cameron Carrillo · Web Design and Development">
+<meta property="og:description" content="Websites that load fast, read well and hold up, built by an electrical engineer. $110 an hour, with a written estimate before any work starts.">
+<meta property="og:url" content="https://cam-carrillo.github.io/portfolio/">
+<meta property="og:image" content="https://cam-carrillo.github.io/portfolio/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<style>
-/* Layout: an engineering drawing sheet. Grid-paper ground, wide display type, a title block as the footer. */
-:root {
-  --paper: #F2F4F6;
-  --sheet: #FFFFFF;
-  --ink: #16233A;
-  --soft: #536079;
-  --rule: #D3DAE3;
-  --grid: rgba(22, 35, 58, 0.055);
-  --mark: #D4461A;
-  --mark-ink: #FFFFFF;
-  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
-  --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
-  color-scheme: light;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #0C121B; --sheet: #131B27; --ink: #E3E9F0; --soft: #98A5B7; --rule: #253145;
-    --grid: rgba(227, 233, 240, 0.05); --mark: #FF7447; --mark-ink: #1A0A04;
-    color-scheme: dark;
+<link rel="stylesheet" href="assets/home.css">
+<script>
+  /* Hide scroll-reveal elements before first paint. If the page script never runs, show everything after 3 s. */
+  document.documentElement.classList.add("js");
+  setTimeout(function () { if (!window.homeReady) document.documentElement.classList.add("no-reveal"); }, 3000);
+</script>
+<script src="assets/home.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Cameron Carrillo · Web design and development",
+  "url": "https://cam-carrillo.github.io/portfolio/",
+  "email": "cam.carrillo@carrilloindustries.com",
+  "description": "Websites and web tools for small businesses and hardware companies.",
+  "priceRange": "$110 per hour",
+  "founder": {
+    "@type": "Person",
+    "name": "Cameron Carrillo",
+    "jobTitle": "Electrical engineer and web developer",
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "University of California, Los Angeles" },
+    "sameAs": ["https://www.linkedin.com/in/cameron-carrillo-446660215/", "https://carrilloindustries.com/"]
   }
 }
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
-body {
-  margin: 0; background-color: var(--paper); color: var(--ink);
-  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-  background-size: 24px 24px;
-  font-family: var(--display); font-size: 17px; line-height: 1.55;
-}
-a { color: inherit; }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--mark); outline-offset: 3px; }
-.wrap { max-width: 1180px; margin: 0 auto; padding-inline: 20px; }
-.label { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
-
-/* Top bar */
-.bar { border-bottom: 1px solid var(--rule); background: var(--sheet); }
-.bar .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 14px; flex-wrap: wrap; }
-.mark { font-weight: 800; font-stretch: 125%; letter-spacing: .02em; text-decoration: none; font-size: 15px; }
-.mark span { color: var(--mark); }
-.bar nav { display: flex; gap: 22px; font-size: 15px; }
-.bar nav a { text-decoration: none; color: var(--soft); }
-.bar nav a:hover { color: var(--ink); }
-
-/* Hero: contour-line shader behind the copy, full bleed */
-.hero-band { position: relative; overflow: hidden; }
-.hero-band .wrap { position: relative; }
-.hero-fx { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
-.hero { padding-block: 88px 72px; display: grid; gap: 22px; }
-.hero h1 { margin: 0; font-weight: 800; font-stretch: 112%; font-size: clamp(38px, 6.4vw, 76px); line-height: 1.02; letter-spacing: -.01em; max-width: 15ch; text-wrap: balance; }
-.hero h1 em { font-style: normal; color: var(--mark); }
-.hero p { margin: 0; max-width: 60ch; font-size: 19px; color: var(--soft); }
-.ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
-.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 4px; font-weight: 600; text-decoration: none; border: 1.5px solid var(--ink); }
-.btn.primary { background: var(--mark); border-color: var(--mark); color: var(--mark-ink); }
-.btn:hover { transform: translateY(-1px); }
-
-/* Work */
-section { scroll-margin-top: 20px; }
-.head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; border-top: 2px solid var(--ink); padding-top: 14px; margin-bottom: 22px; }
-.head h2 { margin: 0; font-weight: 800; font-stretch: 125%; font-size: 30px; line-height: 1.1; }
-.filters { display: flex; gap: 6px; flex-wrap: wrap; }
-.filters button { font: inherit; font-family: var(--mono); font-size: 13px; padding: 6px 12px; border: 1px solid var(--rule); background: var(--sheet); color: var(--soft); border-radius: 999px; cursor: pointer; }
-.filters button[aria-pressed="true"] { background: var(--ink); color: var(--sheet); border-color: var(--ink); }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 22px; }
-.card { display: grid; grid-template-rows: auto 1fr; background: var(--sheet); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; text-decoration: none; transition: transform .15s ease, border-color .15s ease; }
-.card:hover { transform: translateY(-3px); border-color: var(--ink); }
-.thumb { aspect-ratio: 16 / 10; width: 100%; display: block; object-fit: cover; object-position: top; border-bottom: 1px solid var(--rule); background: var(--paper); }
-.tile { aspect-ratio: 16 / 10; border-bottom: 1px solid var(--rule); position: relative; display: grid; align-content: end; padding: 18px; color: #fff;
-  background-image: linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px);
-  background-size: 20px 20px; }
-.tile b { font-weight: 800; font-stretch: 118%; font-size: 26px; line-height: 1.05; text-wrap: balance; }
-.tile i { position: absolute; top: 14px; left: 18px; font-style: normal; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; opacity: .85; }
-.body { padding: 16px 18px 18px; display: grid; gap: 8px; align-content: start; }
-.body h3 { margin: 0; font-weight: 700; font-stretch: 110%; font-size: 21px; line-height: 1.15; }
-.body p { margin: 0; font-size: 15px; color: var(--soft); }
-.tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 2px; }
-.tags span { font-family: var(--mono); font-size: 11.5px; padding: 2px 8px; border: 1px solid var(--rule); border-radius: 999px; color: var(--soft); }
-.feats { list-style: none; margin: 2px 0 0; padding: 0; display: grid; gap: 4px; font-size: 14px; color: var(--soft); }
-.feats li::before { content: "+ "; font-family: var(--mono); color: var(--mark); }
-.open { font-weight: 600; font-size: 15px; color: var(--mark); margin-top: 4px; }
-.empty { background: var(--sheet); border: 1.5px dashed var(--rule); border-radius: 6px; padding: 36px 24px; text-align: center; color: var(--soft); }
-.empty b { display: block; color: var(--ink); font-stretch: 112%; font-size: 21px; margin-bottom: 4px; }
-
-/* Approach */
-.approach { padding-block: 72px 24px; }
-.points { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 22px; }
-.point { border-top: 1px solid var(--rule); padding-top: 14px; }
-.point h3 { margin: 6px 0 6px; font-stretch: 112%; font-size: 21px; }
-.point p { margin: 0; color: var(--soft); font-size: 16px; }
-
-/* Title block footer */
-.titleblock { margin-top: 64px; margin-bottom: 40px; }
-.tb { display: grid; grid-template-columns: 2fr repeat(3, 1fr); border: 2px solid var(--ink); background: var(--sheet); }
-.tb > div { padding: 10px 14px; border-left: 1px solid var(--ink); min-width: 0; }
-.tb > div:first-child { border-left: 0; }
-.tb .v { font-weight: 700; font-stretch: 112%; font-size: 17px; overflow-wrap: anywhere; }
-.tb .note { grid-column: 1 / -1; border-left: 0; border-top: 1px solid var(--ink); font-size: 14px; color: var(--soft); }
-/* Scroll reveal. Only armed when JS runs and motion is allowed, so content never stays hidden.
-   The animation fills backwards only, so cards get their own hover transform back once it ends. */
-.reveal-on [data-reveal]:not(.in) { opacity: 0; }
-.reveal-on [data-reveal].in { animation: rise .7s cubic-bezier(.2, .7, .2, 1) var(--d, 0ms) backwards; }
-@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
-
-@media (max-width: 640px) {
-  .tb { grid-template-columns: 1fr 1fr; }
-  .tb > div:nth-child(3) { border-left: 0; }
-  .tb > div:nth-child(n+3):not(.note) { border-top: 1px solid var(--ink); }
-  .hero { padding-block: 56px 48px; }
-}
-</style>
+</script>
 </head>
 <body>
-<header class="bar">
-  <div class="wrap">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="bar" id="top">
+  <div class="wrap bar-row">
     <a class="mark" href="./">C.&nbsp;CARRILLO<span> /</span> WEB</a>
-    <nav aria-label="Main">
+    <nav class="nav" id="site-nav" aria-label="Main">
       <a href="#work">Work</a>
-      <a href="#approach">Approach</a>
-      <a href="https://www.linkedin.com/in/cameron-carrillo-446660215/" target="_blank" rel="noopener">Contact</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <a href="#rates">Rates</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn primary nav-cta" href="#contact">Start a project</a>
     </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="menu-icon" aria-hidden="true"></span>Menu
+    </button>
   </div>
 </header>
 
-<main>
+<main id="main">
   <div class="hero-band">
     <canvas class="hero-fx" aria-hidden="true"></canvas>
     <div class="wrap">
       <section class="hero" aria-labelledby="hero-title">
         <span class="label" data-reveal>Cameron Carrillo · Web design and development</span>
         <h1 id="hero-title" data-reveal>Websites that load fast, read well and <em>hold up.</em></h1>
-        <p data-reveal>I'm an electrical engineer who designs and builds websites and small web tools for small businesses and hardware companies. Everything below is a working build for a fictional brand, so you can click through it the way your customers would.</p>
+        <p class="lede" data-reveal>I'm an electrical engineer who designs and builds websites and web tools for small businesses and hardware companies. The work below is a set of complete sample sites for made-up brands, so you can click through them the way your customers would.</p>
         <div class="ctas" data-reveal>
-          <a class="btn primary" href="https://www.linkedin.com/in/cameron-carrillo-446660215/" target="_blank" rel="noopener">Start a project</a>
+          <a class="btn primary" href="#contact">Start a project</a>
           <a class="btn" href="#work">See the work</a>
         </div>
+        <dl class="specs" data-reveal>
+          <div><dt class="label">Engineering background</dt><dd>UCLA Electrical Engineering · Boeing Phantom Works · L3Harris</dd></div>
+          <div><dt class="label">Rate</dt><dd>$110 an hour, with a written estimate first</dd></div>
+          <div><dt class="label">You keep</dt><dd>The code, the domain and the hosting</dd></div>
+        </dl>
       </section>
     </div>
   </div>
 
   <div class="wrap">
-    <section id="work" aria-labelledby="work-title">
+    <section id="work" class="block" aria-labelledby="work-title">
       <div class="head" data-reveal>
-        <h2 id="work-title">Work</h2>
+        <div>
+          <span class="label">01 · Work</span>
+          <h2 id="work-title">Sites you can click through</h2>
+        </div>
         <div class="filters" role="group" aria-label="Filter work">
           <button type="button" data-f="all" aria-pressed="true">All</button>
           <button type="button" data-f="site" aria-pressed="false">Websites</button>
           <button type="button" data-f="tool" aria-pressed="false">Tools</button>
         </div>
       </div>
+      <p class="intro" data-reveal>Every brand here is made up, and every build is complete: the menus, forms, animations and phone layouts all work. Open one and try it.</p>
       <div class="grid" id="grid" aria-live="polite"></div>
+      <noscript><p class="empty">Turn on JavaScript to see the work.</p></noscript>
+      <div class="more"><button type="button" class="btn" id="show-all" hidden>Show all work</button></div>
     </section>
 
-    <section id="approach" class="approach" aria-labelledby="approach-title">
-      <div class="head" data-reveal><h2 id="approach-title">Approach</h2></div>
-      <div class="points">
-        <div class="point" data-reveal><span class="label">01 · Code</span><h3>Built from scratch</h3><p>Hand-written HTML, CSS and JavaScript. No page-builder lock-in and no monthly theme fees.</p></div>
-        <div class="point" data-reveal><span class="label">02 · Speed</span><h3>Fast and accessible</h3><p>Light enough for a phone on a weak signal, and usable with a keyboard or a screen reader.</p></div>
-        <div class="point" data-reveal><span class="label">03 · Handoff</span><h3>Yours to keep</h3><p>You get the code and the hosting setup, documented, with no proprietary platform in the way.</p></div>
+    <section id="services" class="block" aria-labelledby="services-title">
+      <div class="head" data-reveal>
+        <div>
+          <span class="label">02 · Services</span>
+          <h2 id="services-title">What I build</h2>
+        </div>
+      </div>
+      <div class="services">
+        <article class="service" data-reveal>
+          <span class="label">For local businesses</span>
+          <h3>Small-business websites</h3>
+          <p>A clear, fast site that turns visitors into calls and bookings: what you do, where you work, when you're open and how to get a quote.</p>
+          <ul class="ticks">
+            <li>Service and location pages</li>
+            <li>Quote, booking and contact forms</li>
+            <li>Tap-to-call and directions</li>
+            <li>Titles and descriptions search engines can read</li>
+          </ul>
+          <p class="example">Example: <a href="sites/laps-hvac/">LAPS HVAC</a></p>
+        </article>
+        <article class="service" data-reveal>
+          <span class="label">For hardware and software companies</span>
+          <h3>Product and startup sites</h3>
+          <p>Product pages, spec tables, pricing and documentation-style layouts that technical buyers trust, written by someone who speaks their language.</p>
+          <ul class="ticks">
+            <li>Product and feature pages</li>
+            <li>Spec sheets and comparisons</li>
+            <li>Pricing and sign-up pages</li>
+            <li>Launch and waitlist pages</li>
+          </ul>
+          <p class="example">Examples: <a href="sites/graticule/">Graticule</a> · <a href="sites/plumbline/">Plumbline</a></p>
+        </article>
+        <article class="service" data-reveal>
+          <span class="label">Interactive</span>
+          <h3>Web tools and calculators</h3>
+          <p>Tools that run right in the browser, with no app to install and no server to look after: quote calculators, product configurators and sizing tools.</p>
+          <ul class="ticks">
+            <li>Live price and quote calculators</li>
+            <li>Product configurators</li>
+            <li>Charts and simple dashboards</li>
+            <li>Copy, export and download options</li>
+          </ul>
+          <p class="example">Example: <a href="sites/laps-hvac/">the LAPS HVAC quote calculator</a></p>
+        </article>
+        <article class="service" data-reveal>
+          <span class="label">Existing sites</span>
+          <h3>Redesigns and fixes</h3>
+          <p>Bring an old or slow site up to date, or fix what's broken. Sometimes that's a few targeted repairs, sometimes a clean rebuild.</p>
+          <ul class="ticks">
+            <li>Speed and image cleanup</li>
+            <li>Phone and tablet layout fixes</li>
+            <li>Accessibility fixes</li>
+            <li>Moving off a page builder</li>
+          </ul>
+        </article>
+      </div>
+      <ul class="standards" data-reveal>
+        <li><b>Custom code</b>HTML, CSS and JavaScript written for your site. No page builder and no monthly theme fees.</li>
+        <li><b>Fast and accessible</b>Light enough for a phone on a weak signal, and usable with a keyboard or a screen reader.</li>
+        <li><b>Yours to keep</b>You get the code and the accounts, documented, with no proprietary platform in the way.</li>
+      </ul>
+    </section>
+
+    <section id="process" class="block" aria-labelledby="process-title">
+      <div class="head" data-reveal>
+        <div>
+          <span class="label">03 · Process</span>
+          <h2 id="process-title">How a project runs</h2>
+        </div>
+      </div>
+      <ol class="steps" data-reveal>
+        <li class="step"><span class="num" aria-hidden="true">1</span><h3>Intro call</h3><p>We talk through your business, your customers and what the site needs to do.</p></li>
+        <li class="step"><span class="num" aria-hidden="true">2</span><h3>Written estimate</h3><p>You get the scope, a schedule and an estimate in hours before any work starts.</p></li>
+        <li class="step"><span class="num" aria-hidden="true">3</span><h3>Design and build</h3><p>You follow along on a private preview link and send feedback as the site takes shape.</p></li>
+        <li class="step"><span class="num" aria-hidden="true">4</span><h3>Launch</h3><p>I connect your domain, set up hosting and test on phones, tablets and desktops before it goes live.</p></li>
+        <li class="step"><span class="num" aria-hidden="true">5</span><h3>Handoff</h3><p>You get the code, every login and a short guide for making simple edits yourself.</p></li>
+      </ol>
+    </section>
+
+    <section id="about" class="block" aria-labelledby="about-title">
+      <div class="head" data-reveal>
+        <div>
+          <span class="label">04 · About</span>
+          <h2 id="about-title">An engineer who builds websites</h2>
+        </div>
+      </div>
+      <div class="about-grid">
+        <div class="stamp" data-reveal aria-hidden="true">
+          <svg class="stamp-art" viewBox="0 0 320 400">
+            <defs><pattern id="stamp-grid" width="16" height="16" patternUnits="userSpaceOnUse"><path class="s-grid" d="M16 0H0V16"/></pattern></defs>
+            <rect width="320" height="400" fill="url(#stamp-grid)"/>
+            <path class="s-ink" d="M14 34V14H34M286 14H306V34M306 366V386H286M34 386H14V366"/>
+            <path class="s-center" d="M160 60V284M48 172H272"/>
+            <circle class="s-thin" cx="160" cy="172" r="104"/>
+            <path class="s-arc" d="M214.2 115.9A78 78 0 1 0 214.2 228.1"/>
+            <path class="s-ink" d="M153 172h14M160 165v14"/>
+            <text class="s-cap" x="160" y="320" text-anchor="middle">CAMERON CARRILLO</text>
+            <text class="s-sub" x="160" y="344" text-anchor="middle">ELECTRICAL ENGINEER · WEB</text>
+          </svg>
+        </div>
+        <div class="about-copy" data-reveal>
+          <p class="about-lead">I'm Cameron Carrillo, a senior electrical engineer with a degree from UCLA. I've worked at large aerospace and defense companies, including Boeing Phantom Works and L3Harris Technologies, designing circuit boards, firmware and test equipment.</p>
+          <p>That work runs on a few habits: write down what's needed, test everything, and document it so the next person can pick it up. I build websites the same way, so yours works on every phone, loads quickly and comes with notes you can actually use.</p>
+          <p>I also design electronics and the software that drives them under <a href="https://carrilloindustries.com/">Carrillo Industries</a>.</p>
+          <dl class="facts">
+            <div><dt class="label">Education</dt><dd>B.S. Electrical Engineering, UCLA</dd></div>
+            <div><dt class="label">Experience</dt><dd>Boeing Phantom Works · L3Harris Technologies</dd></div>
+            <div><dt class="label">Web work</dt><dd>Design, HTML, CSS and JavaScript, accessibility, speed</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section id="rates" class="block" aria-labelledby="rates-title">
+      <div class="head" data-reveal>
+        <div>
+          <span class="label">05 · Rates</span>
+          <h2 id="rates-title">One hourly rate, estimated up front</h2>
+        </div>
+      </div>
+      <div class="rates">
+        <div class="rate-card" data-reveal>
+          <span class="label">Design, development and changes</span>
+          <p class="rate"><span class="amount">$110</span><span class="per">per hour</span></p>
+          <p>You get a written estimate before any work starts, and you'll hear from me before anything goes over it.</p>
+          <a class="btn primary" href="#contact">Get an estimate</a>
+        </div>
+        <table class="spec-table" data-reveal>
+          <caption class="label">Table 1 · What a website costs to run</caption>
+          <thead><tr><th scope="col">Item</th><th scope="col">Typical cost</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">My time</th><td>$110 an hour, estimated in writing first</td></tr>
+            <tr><th scope="row">Retainer or monthly fee</th><td>None</td></tr>
+            <tr><th scope="row">Hosting</th><td>Often free for a simple site</td></tr>
+            <tr><th scope="row">Domain name</th><td>About $10 to $20 a year, paid to the registrar in your name</td></tr>
+            <tr><th scope="row">Changes after launch</th><td>The same hourly rate, only when you need them</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="faq" class="block" aria-labelledby="faq-title">
+      <div class="head" data-reveal>
+        <div>
+          <span class="label">06 · Questions</span>
+          <h2 id="faq-title">Common questions</h2>
+        </div>
+      </div>
+      <div class="faq">
+        <details data-reveal>
+          <summary>Are the businesses in the Work section real?</summary>
+          <p>No. They're sample projects for made-up brands, built to show what a finished site looks like. Every menu, form and phone layout works, so try them yourself. Client projects will be added with the client's permission.</p>
+        </details>
+        <details data-reveal>
+          <summary>Do I own my website?</summary>
+          <p>Yes. The code is yours, and the domain and hosting accounts are set up in your name. If you ever want someone else to work on the site, nothing stands in the way.</p>
+        </details>
+        <details data-reveal>
+          <summary>How long does a website take?</summary>
+          <p>It depends on the size of the site and how quickly content and feedback come together. Your written estimate includes a schedule, so you'll know before we start.</p>
+        </details>
+        <details data-reveal>
+          <summary>What does it cost to keep a site running?</summary>
+          <p>A simple site can often be hosted for free. You'll pay for your domain name, usually $10 to $20 a year, and for any changes you ask me to make, at the same hourly rate.</p>
+        </details>
+        <details data-reveal>
+          <summary>Can you work on my existing site?</summary>
+          <p>Yes. I can fix, speed up or extend an existing site, or rebuild it if that's the better deal over time. We'll work out which on the intro call.</p>
+        </details>
+        <details data-reveal>
+          <summary>Who writes the words and supplies the photos?</summary>
+          <p>You know your business best, so the words start with you. I'll shape them into clear pages, and use your own photos or properly licensed stock images.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="contact" class="block" aria-labelledby="contact-title">
+      <div class="head" data-reveal>
+        <div>
+          <span class="label">07 · Contact</span>
+          <h2 id="contact-title">Start a project</h2>
+        </div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-copy" data-reveal>
+          <p>Tell me about your business and what you need. I'll reply by email to set up a call.</p>
+          <ul class="direct">
+            <li>
+              <span class="label">Email</span>
+              <span class="direct-row"><a href="mailto:cam.carrillo@carrilloindustries.com">cam.carrillo@carrilloindustries.com</a><button type="button" class="copy" data-copy="cam.carrillo@carrilloindustries.com">Copy</button></span>
+            </li>
+            <li>
+              <span class="label">LinkedIn</span>
+              <a href="https://www.linkedin.com/in/cameron-carrillo-446660215/" target="_blank" rel="noopener">Cameron Carrillo</a>
+            </li>
+          </ul>
+        </div>
+        <form class="form" id="contact-form" action="mailto:cam.carrillo@carrilloindustries.com" method="post" enctype="text/plain" data-endpoint="" novalidate data-reveal>
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-err">
+            <p class="err" id="f-name-err"></p>
+          </div>
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="f-email-err">
+            <p class="err" id="f-email-err"></p>
+          </div>
+          <div class="field">
+            <label for="f-company">Business or company <span class="opt">(optional)</span></label>
+            <input id="f-company" name="company" type="text" autocomplete="organization">
+          </div>
+          <div class="field">
+            <label for="f-need">What do you need?</label>
+            <select id="f-need" name="need" required aria-describedby="f-need-err">
+              <option value="">Choose one</option>
+              <option>A new website</option>
+              <option>A redesign of my current site</option>
+              <option>A web tool or calculator</option>
+              <option>Fixes or changes to a site</option>
+              <option>Something else</option>
+            </select>
+            <p class="err" id="f-need-err"></p>
+          </div>
+          <div class="field wide">
+            <label for="f-message">About the project</label>
+            <textarea id="f-message" name="message" rows="5" required aria-describedby="f-message-hint f-message-err"></textarea>
+            <p class="hint" id="f-message-hint">What does your business do, and what should the site help with?</p>
+            <p class="err" id="f-message-err"></p>
+          </div>
+          <div class="trap">
+            <label for="f-trap">Leave this field empty</label>
+            <input id="f-trap" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="form-foot wide">
+            <button class="btn primary" type="submit">Send message</button>
+            <p class="fine">Your message comes straight to me. No mailing lists, and your details are never shared.</p>
+          </div>
+          <div class="status wide" id="form-status" role="status" aria-live="polite"></div>
+        </form>
       </div>
     </section>
   </div>
@@ -176,208 +353,20 @@ section { scroll-margin-top: 20px; }
 <footer class="wrap titleblock">
   <div class="tb" data-reveal>
     <div><span class="label">Drawn by</span><div class="v">Cameron Carrillo</div></div>
-    <div><span class="label">Sheet</span><div class="v">Portfolio index</div></div>
+    <div><span class="label">Sheet</span><div class="v">Web design and development</div></div>
     <div><span class="label">Items</span><div class="v" id="tb-count">0</div></div>
     <div><span class="label">Rev</span><div class="v" id="tb-rev">—</div></div>
-    <div class="note">Every brand shown here is fictional. Each piece was designed and built from scratch as a portfolio concept.</div>
+    <div class="note">Every brand in the Work section is fictional. Each site and tool is a complete sample build, made to show what a finished project looks like.</div>
+  </div>
+  <div class="foot-row">
+    <p>© <span id="year">2026</span> Cameron Carrillo</p>
+    <nav aria-label="Footer">
+      <a href="mailto:cam.carrillo@carrilloindustries.com">Email</a>
+      <a href="https://www.linkedin.com/in/cameron-carrillo-446660215/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://carrilloindustries.com/">Carrillo Industries</a>
+      <a href="#top">Back to top</a>
+    </nav>
   </div>
 </footer>
-
-<script>
-/* Scroll reveal: elements marked data-reveal rise in as they enter the viewport.
-   Elements that arrive together are staggered. */
-(function () {
-  var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (calm || !("IntersectionObserver" in window)) return;
-  document.documentElement.classList.add("reveal-on");
-  var io = new IntersectionObserver(function (entries) {
-    var i = 0;
-    entries.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      e.target.style.setProperty("--d", Math.min(i++ * 80, 480) + "ms");
-      e.target.classList.add("in");
-      io.unobserve(e.target);
-    });
-  }, { rootMargin: "0px 0px -8% 0px" });
-  window.revealWatch = function (root) {
-    root.querySelectorAll("[data-reveal]:not(.in)").forEach(function (el) { io.observe(el); });
-  };
-  window.revealWatch(document);
-})();
-
-/* Hero shader: topographic contour lines over drifting noise, drawn in the accent color.
-   Plain WebGL, no library. Pauses off screen, renders one still frame for reduced motion,
-   and leaves the plain grid paper in place if WebGL is unavailable. */
-(function () {
-  var canvas = document.querySelector(".hero-fx");
-  var band = document.querySelector(".hero-band");
-  var gl = canvas && canvas.getContext("webgl", { premultipliedAlpha: true, antialias: false });
-  if (!gl || !gl.getExtension("OES_standard_derivatives")) return;
-  var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  var vs = "attribute vec2 p; void main(){ gl_Position = vec4(p, 0.0, 1.0); }";
-  var fs = [
-    "#extension GL_OES_standard_derivatives : enable",
-    "precision mediump float;",
-    "uniform vec2 uRes; uniform float uTime; uniform vec3 uInk; uniform vec2 uPtr; uniform float uPtrAmt; uniform float uGain;",
-    "float hash(vec2 p){ p = fract(p * vec2(123.34, 456.21)); p += dot(p, p + 45.32); return fract(p.x * p.y); }",
-    "float noise(vec2 p){ vec2 i = floor(p), f = fract(p); vec2 u = f * f * (3.0 - 2.0 * f);",
-    "  return mix(mix(hash(i), hash(i + vec2(1, 0)), u.x), mix(hash(i + vec2(0, 1)), hash(i + vec2(1, 1)), u.x), u.y); }",
-    "float fbm(vec2 p){ float v = 0.0, a = 0.5; for (int k = 0; k < 4; k++) { v += a * noise(p); p = p * 2.03 + 17.0; a *= 0.5; } return v; }",
-    "float iso(float n, float w){ float f = fract(n); return 1.0 - smoothstep(0.0, w, min(f, 1.0 - f)); }",
-    "void main(){",
-    "  vec2 uv = gl_FragCoord.xy / uRes.y;",
-    "  float t = uTime * 0.035;",
-    "  float v = fbm(uv * 1.5 + vec2(t, -t * 0.6)) + 0.35 * fbm(uv * 3.1 - vec2(t * 0.7, t));",
-    "  vec2 d = (gl_FragCoord.xy - uPtr) / uRes.y;",
-    "  v += uPtrAmt * 0.22 * exp(-dot(d, d) * 14.0);",
-    "  float n = v * 10.0;",
-    "  float w = fwidth(n);",
-    "  float a = 0.22 * iso(n, w * 1.1) + 0.30 * iso(n / 5.0, w * 0.4);",
-    "  vec2 s = gl_FragCoord.xy / uRes;",
-    "  a *= smoothstep(0.22, 0.85, s.x) * smoothstep(0.0, 0.3, s.y) * uGain;",
-    "  gl_FragColor = vec4(uInk * a, a);",
-    "}"
-  ].join("\n");
-
-  function shader(type, src) {
-    var s = gl.createShader(type);
-    gl.shaderSource(s, src);
-    gl.compileShader(s);
-    return gl.getShaderParameter(s, gl.COMPILE_STATUS) ? s : null;
-  }
-  var v = shader(gl.VERTEX_SHADER, vs), f = shader(gl.FRAGMENT_SHADER, fs);
-  if (!v || !f) return;
-  var prog = gl.createProgram();
-  gl.attachShader(prog, v);
-  gl.attachShader(prog, f);
-  gl.linkProgram(prog);
-  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
-  gl.useProgram(prog);
-
-  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
-  var loc = gl.getAttribLocation(prog, "p");
-  gl.enableVertexAttribArray(loc);
-  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-
-  var U = {};
-  ["uRes", "uTime", "uInk", "uPtr", "uPtrAmt", "uGain"].forEach(function (k) { U[k] = gl.getUniformLocation(prog, k); });
-
-  function readInk() {
-    var hex = getComputedStyle(document.documentElement).getPropertyValue("--mark").trim().replace("#", "");
-    if (hex.length === 3) hex = hex.replace(/./g, "$&$&");
-    var n = parseInt(hex, 16) || 0xD4461A;
-    gl.uniform3f(U.uInk, (n >> 16 & 255) / 255, (n >> 8 & 255) / 255, (n & 255) / 255);
-  }
-
-  var dpr = 1;
-  function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-    var w = Math.max(1, Math.round(canvas.clientWidth * dpr)), h = Math.max(1, Math.round(canvas.clientHeight * dpr));
-    if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
-    gl.viewport(0, 0, w, h);
-    gl.uniform2f(U.uRes, w, h);
-    // Copy spans the full width on phones, so keep the lines fainter there.
-    gl.uniform1f(U.uGain, canvas.clientWidth < 700 ? 0.55 : 1.0);
-  }
-
-  var ptr = { x: -9999, y: -9999, on: false }, amt = 0;
-  if (!calm) {
-    band.addEventListener("pointermove", function (e) {
-      var r = canvas.getBoundingClientRect();
-      ptr.x = (e.clientX - r.left) * dpr;
-      ptr.y = (r.bottom - e.clientY) * dpr;
-      ptr.on = true;
-    });
-    band.addEventListener("pointerleave", function () { ptr.on = false; });
-  }
-
-  var start = performance.now(), raf = 0, visible = true;
-  function draw(now) {
-    amt += ((ptr.on ? 1 : 0) - amt) * 0.06;
-    gl.uniform1f(U.uTime, calm ? 40.0 : 40.0 + (now - start) / 1000);
-    gl.uniform2f(U.uPtr, ptr.x, ptr.y);
-    gl.uniform1f(U.uPtrAmt, amt);
-    gl.clearColor(0, 0, 0, 0);
-    gl.clear(gl.COLOR_BUFFER_BIT);
-    gl.drawArrays(gl.TRIANGLES, 0, 3);
-  }
-  function loop(now) { draw(now); raf = requestAnimationFrame(loop); }
-  function play() { if (!calm && !raf && visible && !document.hidden) raf = requestAnimationFrame(loop); }
-  function stop() { cancelAnimationFrame(raf); raf = 0; }
-
-  readInk();
-  resize();
-  draw(performance.now());
-  new ResizeObserver(function () { resize(); draw(performance.now()); }).observe(canvas);
-  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () { readInk(); draw(performance.now()); });
-  new IntersectionObserver(function (es) { visible = es[0].isIntersecting; visible ? play() : stop(); }).observe(canvas);
-  document.addEventListener("visibilitychange", function () { document.hidden ? stop() : play(); });
-  canvas.addEventListener("webglcontextlost", stop);
-  play();
-})();
-
-(function () {
-  var TYPE ={ site: "Website", tool: "Web tool" };
-  var HUES = ["#2E63C9", "#C8441C", "#1E7D66", "#7A49C4", "#A87700", "#B4325F"];
-  var grid = document.getElementById("grid");
-  var items = [];
-  var current = "all";
-
-  function esc(s) {
-    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
-      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
-    });
-  }
-  function hue(s) {
-    var h = 7;
-    for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
-    return HUES[h % HUES.length];
-  }
-  function card(it) {
-    var visual = it.thumb
-      ? '<img class="thumb" src="' + esc(it.thumb) + '" alt="Screenshot of ' + esc(it.title) + '" loading="lazy">'
-      : '<div class="tile" style="background-color:' + hue(it.slug || it.title || "") + '"><i>' + esc(TYPE[it.type] || "Project") + '</i><b>' + esc(it.title) + "</b></div>";
-    var tags = [it.industry].concat(it.style || []).filter(Boolean)
-      .map(function (t) { return "<span>" + esc(t) + "</span>"; }).join("");
-    var feats = (it.features || []).slice(0, 4).map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("");
-    return '<a class="card" data-reveal href="' + esc(it.path) + '">' + visual +
-      '<div class="body"><span class="label">' + esc(TYPE[it.type] || "Project") + "</span>" +
-      "<h3>" + esc(it.title) + "</h3><p>" + esc(it.summary) + "</p>" +
-      (feats ? '<ul class="feats">' + feats + "</ul>" : "") +
-      '<div class="tags">' + tags + '</div><span class="open">Open the ' + (it.type === "tool" ? "tool" : "site") + " →</span></div></a>";
-  }
-  function render() {
-    var shown = items.filter(function (it) { return current === "all" || it.type === current; });
-    if (!items.length) {
-      grid.innerHTML = '<div class="empty"><b>The first pieces are on the bench.</b>New websites and tools are added every week.</div>';
-    } else if (!shown.length) {
-      grid.innerHTML = '<div class="empty"><b>Nothing here yet.</b>Try another filter.</div>';
-    } else {
-      grid.innerHTML = shown.map(card).join("");
-    }
-    if (window.revealWatch) window.revealWatch(grid);
-    document.getElementById("tb-count").textContent = items.length;
-    var latest = items.reduce(function (a, it) { return (it.added || "") > a ? it.added : a; }, "");
-    document.getElementById("tb-rev").textContent = latest || "—";
-  }
-  document.querySelectorAll(".filters button").forEach(function (b) {
-    b.addEventListener("click", function () {
-      current = b.getAttribute("data-f");
-      document.querySelectorAll(".filters button").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
-      render();
-    });
-  });
-  fetch("catalog.json", { cache: "no-store" })
-    .then(function (r) { return r.ok ? r.json() : []; })
-    .catch(function () { return []; })
-    .then(function (data) {
-      items = (Array.isArray(data) ? data : []).slice().sort(function (a, b) { return (b.added || "").localeCompare(a.added || ""); });
-      render();
-    });
-  render();
-})();
-</script>
 </body>
 </html>
