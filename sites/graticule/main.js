@@ -166,7 +166,7 @@
   });
 
   /* ---------- Share row ---------- */
-  const shareUrl = /^https?:/.test(location.protocol) ? location.href.split("#")[0] : "https://cam-carrillo.github.io/portfolio/sites/graticule/";
+  const shareUrl = /^https?:/.test(location.protocol) ? location.href.split("#")[0] : "https://carrilloindustries.com/web/sites/graticule/";
   const shareText = "Graticule: open-source software for the electronics bench";
   const E = encodeURIComponent;
   const intents = {
