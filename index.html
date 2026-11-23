@@ -53,8 +53,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--mark); outline-
 .bar nav a { text-decoration: none; color: var(--soft); }
 .bar nav a:hover { color: var(--ink); }
 
-/* Hero */
-.hero { padding-block: 72px 56px; display: grid; gap: 22px; }
+/* Hero: contour-line shader behind the copy, full bleed */
+.hero-band { position: relative; overflow: hidden; }
+.hero-band .wrap { position: relative; }
+.hero-fx { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
+.hero { padding-block: 88px 72px; display: grid; gap: 22px; }
 .hero h1 { margin: 0; font-weight: 800; font-stretch: 112%; font-size: clamp(38px, 6.4vw, 76px); line-height: 1.02; letter-spacing: -.01em; max-width: 15ch; text-wrap: balance; }
 .hero h1 em { font-style: normal; color: var(--mark); }
 .hero p { margin: 0; max-width: 60ch; font-size: 19px; color: var(--soft); }
@@ -102,11 +105,17 @@ section { scroll-margin-top: 20px; }
 .tb > div:first-child { border-left: 0; }
 .tb .v { font-weight: 700; font-stretch: 112%; font-size: 17px; overflow-wrap: anywhere; }
 .tb .note { grid-column: 1 / -1; border-left: 0; border-top: 1px solid var(--ink); font-size: 14px; color: var(--soft); }
+/* Scroll reveal. Only armed when JS runs and motion is allowed, so content never stays hidden.
+   The animation fills backwards only, so cards get their own hover transform back once it ends. */
+.reveal-on [data-reveal]:not(.in) { opacity: 0; }
+.reveal-on [data-reveal].in { animation: rise .7s cubic-bezier(.2, .7, .2, 1) var(--d, 0ms) backwards; }
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
 @media (max-width: 640px) {
   .tb { grid-template-columns: 1fr 1fr; }
   .tb > div:nth-child(3) { border-left: 0; }
   .tb > div:nth-child(n+3):not(.note) { border-top: 1px solid var(--ink); }
-  .hero { padding-block: 48px 40px; }
+  .hero { padding-block: 56px 48px; }
 }
 </style>
 </head>
@@ -123,19 +132,24 @@ section { scroll-margin-top: 20px; }
 </header>
 
 <main>
-  <div class="wrap">
-    <section class="hero" aria-labelledby="hero-title">
-      <span class="label">Cameron Carrillo · Web design and development</span>
-      <h1 id="hero-title">Websites that load fast, read well and <em>hold up.</em></h1>
-      <p>I'm an electrical engineer who designs and builds websites and small web tools for small businesses and hardware companies. Everything below is a working build for a fictional brand, so you can click through it the way your customers would.</p>
-      <div class="ctas">
-        <a class="btn primary" href="https://www.linkedin.com/in/cameron-carrillo-446660215/" target="_blank" rel="noopener">Start a project</a>
-        <a class="btn" href="#work">See the work</a>
-      </div>
-    </section>
+  <div class="hero-band">
+    <canvas class="hero-fx" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <section class="hero" aria-labelledby="hero-title">
+        <span class="label" data-reveal>Cameron Carrillo · Web design and development</span>
+        <h1 id="hero-title" data-reveal>Websites that load fast, read well and <em>hold up.</em></h1>
+        <p data-reveal>I'm an electrical engineer who designs and builds websites and small web tools for small businesses and hardware companies. Everything below is a working build for a fictional brand, so you can click through it the way your customers would.</p>
+        <div class="ctas" data-reveal>
+          <a class="btn primary" href="https://www.linkedin.com/in/cameron-carrillo-446660215/" target="_blank" rel="noopener">Start a project</a>
+          <a class="btn" href="#work">See the work</a>
+        </div>
+      </section>
+    </div>
+  </div>
 
+  <div class="wrap">
     <section id="work" aria-labelledby="work-title">
-      <div class="head">
+      <div class="head" data-reveal>
         <h2 id="work-title">Work</h2>
         <div class="filters" role="group" aria-label="Filter work">
           <button type="button" data-f="all" aria-pressed="true">All</button>
@@ -147,18 +161,18 @@ section { scroll-margin-top: 20px; }
     </section>
 
     <section id="approach" class="approach" aria-labelledby="approach-title">
-      <div class="head"><h2 id="approach-title">Approach</h2></div>
+      <div class="head" data-reveal><h2 id="approach-title">Approach</h2></div>
       <div class="points">
-        <div class="point"><span class="label">01 · Code</span><h3>Built from scratch</h3><p>Hand-written HTML, CSS and JavaScript. No page-builder lock-in and no monthly theme fees.</p></div>
-        <div class="point"><span class="label">02 · Speed</span><h3>Fast and accessible</h3><p>Light enough for a phone on a weak signal, and usable with a keyboard or a screen reader.</p></div>
-        <div class="point"><span class="label">03 · Handoff</span><h3>Yours to keep</h3><p>You get the code and the hosting setup, documented, with no proprietary platform in the way.</p></div>
+        <div class="point" data-reveal><span class="label">01 · Code</span><h3>Built from scratch</h3><p>Hand-written HTML, CSS and JavaScript. No page-builder lock-in and no monthly theme fees.</p></div>
+        <div class="point" data-reveal><span class="label">02 · Speed</span><h3>Fast and accessible</h3><p>Light enough for a phone on a weak signal, and usable with a keyboard or a screen reader.</p></div>
+        <div class="point" data-reveal><span class="label">03 · Handoff</span><h3>Yours to keep</h3><p>You get the code and the hosting setup, documented, with no proprietary platform in the way.</p></div>
       </div>
     </section>
   </div>
 </main>
 
 <footer class="wrap titleblock">
-  <div class="tb">
+  <div class="tb" data-reveal>
     <div><span class="label">Drawn by</span><div class="v">Cameron Carrillo</div></div>
     <div><span class="label">Sheet</span><div class="v">Portfolio index</div></div>
     <div><span class="label">Items</span><div class="v" id="tb-count">0</div></div>
@@ -168,8 +182,142 @@ section { scroll-margin-top: 20px; }
 </footer>
 
 <script>
+/* Scroll reveal: elements marked data-reveal rise in as they enter the viewport.
+   Elements that arrive together are staggered. */
 (function () {
-  var TYPE = { site: "Website", tool: "Web tool" };
+  var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (calm || !("IntersectionObserver" in window)) return;
+  document.documentElement.classList.add("reveal-on");
+  var io = new IntersectionObserver(function (entries) {
+    var i = 0;
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.style.setProperty("--d", Math.min(i++ * 80, 480) + "ms");
+      e.target.classList.add("in");
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: "0px 0px -8% 0px" });
+  window.revealWatch = function (root) {
+    root.querySelectorAll("[data-reveal]:not(.in)").forEach(function (el) { io.observe(el); });
+  };
+  window.revealWatch(document);
+})();
+
+/* Hero shader: topographic contour lines over drifting noise, drawn in the accent color.
+   Plain WebGL, no library. Pauses off screen, renders one still frame for reduced motion,
+   and leaves the plain grid paper in place if WebGL is unavailable. */
+(function () {
+  var canvas = document.querySelector(".hero-fx");
+  var band = document.querySelector(".hero-band");
+  var gl = canvas && canvas.getContext("webgl", { premultipliedAlpha: true, antialias: false });
+  if (!gl || !gl.getExtension("OES_standard_derivatives")) return;
+  var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var vs = "attribute vec2 p; void main(){ gl_Position = vec4(p, 0.0, 1.0); }";
+  var fs = [
+    "#extension GL_OES_standard_derivatives : enable",
+    "precision mediump float;",
+    "uniform vec2 uRes; uniform float uTime; uniform vec3 uInk; uniform vec2 uPtr; uniform float uPtrAmt; uniform float uGain;",
+    "float hash(vec2 p){ p = fract(p * vec2(123.34, 456.21)); p += dot(p, p + 45.32); return fract(p.x * p.y); }",
+    "float noise(vec2 p){ vec2 i = floor(p), f = fract(p); vec2 u = f * f * (3.0 - 2.0 * f);",
+    "  return mix(mix(hash(i), hash(i + vec2(1, 0)), u.x), mix(hash(i + vec2(0, 1)), hash(i + vec2(1, 1)), u.x), u.y); }",
+    "float fbm(vec2 p){ float v = 0.0, a = 0.5; for (int k = 0; k < 4; k++) { v += a * noise(p); p = p * 2.03 + 17.0; a *= 0.5; } return v; }",
+    "float iso(float n, float w){ float f = fract(n); return 1.0 - smoothstep(0.0, w, min(f, 1.0 - f)); }",
+    "void main(){",
+    "  vec2 uv = gl_FragCoord.xy / uRes.y;",
+    "  float t = uTime * 0.035;",
+    "  float v = fbm(uv * 1.5 + vec2(t, -t * 0.6)) + 0.35 * fbm(uv * 3.1 - vec2(t * 0.7, t));",
+    "  vec2 d = (gl_FragCoord.xy - uPtr) / uRes.y;",
+    "  v += uPtrAmt * 0.22 * exp(-dot(d, d) * 14.0);",
+    "  float n = v * 10.0;",
+    "  float w = fwidth(n);",
+    "  float a = 0.22 * iso(n, w * 1.1) + 0.30 * iso(n / 5.0, w * 0.4);",
+    "  vec2 s = gl_FragCoord.xy / uRes;",
+    "  a *= smoothstep(0.22, 0.85, s.x) * smoothstep(0.0, 0.3, s.y) * uGain;",
+    "  gl_FragColor = vec4(uInk * a, a);",
+    "}"
+  ].join("\n");
+
+  function shader(type, src) {
+    var s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return gl.getShaderParameter(s, gl.COMPILE_STATUS) ? s : null;
+  }
+  var v = shader(gl.VERTEX_SHADER, vs), f = shader(gl.FRAGMENT_SHADER, fs);
+  if (!v || !f) return;
+  var prog = gl.createProgram();
+  gl.attachShader(prog, v);
+  gl.attachShader(prog, f);
+  gl.linkProgram(prog);
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
+  gl.useProgram(prog);
+
+  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+  var loc = gl.getAttribLocation(prog, "p");
+  gl.enableVertexAttribArray(loc);
+  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+
+  var U = {};
+  ["uRes", "uTime", "uInk", "uPtr", "uPtrAmt", "uGain"].forEach(function (k) { U[k] = gl.getUniformLocation(prog, k); });
+
+  function readInk() {
+    var hex = getComputedStyle(document.documentElement).getPropertyValue("--mark").trim().replace("#", "");
+    if (hex.length === 3) hex = hex.replace(/./g, "$&$&");
+    var n = parseInt(hex, 16) || 0xD4461A;
+    gl.uniform3f(U.uInk, (n >> 16 & 255) / 255, (n >> 8 & 255) / 255, (n & 255) / 255);
+  }
+
+  var dpr = 1;
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    var w = Math.max(1, Math.round(canvas.clientWidth * dpr)), h = Math.max(1, Math.round(canvas.clientHeight * dpr));
+    if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+    gl.viewport(0, 0, w, h);
+    gl.uniform2f(U.uRes, w, h);
+    // Copy spans the full width on phones, so keep the lines fainter there.
+    gl.uniform1f(U.uGain, canvas.clientWidth < 700 ? 0.55 : 1.0);
+  }
+
+  var ptr = { x: -9999, y: -9999, on: false }, amt = 0;
+  if (!calm) {
+    band.addEventListener("pointermove", function (e) {
+      var r = canvas.getBoundingClientRect();
+      ptr.x = (e.clientX - r.left) * dpr;
+      ptr.y = (r.bottom - e.clientY) * dpr;
+      ptr.on = true;
+    });
+    band.addEventListener("pointerleave", function () { ptr.on = false; });
+  }
+
+  var start = performance.now(), raf = 0, visible = true;
+  function draw(now) {
+    amt += ((ptr.on ? 1 : 0) - amt) * 0.06;
+    gl.uniform1f(U.uTime, calm ? 40.0 : 40.0 + (now - start) / 1000);
+    gl.uniform2f(U.uPtr, ptr.x, ptr.y);
+    gl.uniform1f(U.uPtrAmt, amt);
+    gl.clearColor(0, 0, 0, 0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+  }
+  function loop(now) { draw(now); raf = requestAnimationFrame(loop); }
+  function play() { if (!calm && !raf && visible && !document.hidden) raf = requestAnimationFrame(loop); }
+  function stop() { cancelAnimationFrame(raf); raf = 0; }
+
+  readInk();
+  resize();
+  draw(performance.now());
+  new ResizeObserver(function () { resize(); draw(performance.now()); }).observe(canvas);
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () { readInk(); draw(performance.now()); });
+  new IntersectionObserver(function (es) { visible = es[0].isIntersecting; visible ? play() : stop(); }).observe(canvas);
+  document.addEventListener("visibilitychange", function () { document.hidden ? stop() : play(); });
+  canvas.addEventListener("webglcontextlost", stop);
+  play();
+})();
+
+(function () {
+  var TYPE ={ site: "Website", tool: "Web tool" };
   var HUES = ["#2E63C9", "#C8441C", "#1E7D66", "#7A49C4", "#A87700", "#B4325F"];
   var grid = document.getElementById("grid");
   var items = [];
@@ -191,7 +339,7 @@ section { scroll-margin-top: 20px; }
       : '<div class="tile" style="background-color:' + hue(it.slug || it.title || "") + '"><i>' + esc(TYPE[it.type] || "Project") + '</i><b>' + esc(it.title) + "</b></div>";
     var tags = [it.industry].concat(it.style || []).filter(Boolean)
       .map(function (t) { return "<span>" + esc(t) + "</span>"; }).join("");
-    return '<a class="card" href="' + esc(it.path) + '">' + visual +
+    return '<a class="card" data-reveal href="' + esc(it.path) + '">' + visual +
       '<div class="body"><span class="label">' + esc(TYPE[it.type] || "Project") + "</span>" +
       "<h3>" + esc(it.title) + "</h3><p>" + esc(it.summary) + "</p>" +
       '<div class="tags">' + tags + '</div><span class="open">Open the ' + (it.type === "tool" ? "tool" : "site") + " →</span></div></a>";
@@ -205,6 +353,7 @@ section { scroll-margin-top: 20px; }
     } else {
       grid.innerHTML = shown.map(card).join("");
     }
+    if (window.revealWatch) window.revealWatch(grid);
     document.getElementById("tb-count").textContent = items.length;
     var latest = items.reduce(function (a, it) { return (it.added || "") > a ? it.added : a; }, "");
     document.getElementById("tb-rev").textContent = latest || "—";
