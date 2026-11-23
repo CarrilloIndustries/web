@@ -4,6 +4,8 @@ The weekly routine builds the first unchecked items, top to bottom, and ticks th
 
 Format: type · industry · angle · layout reference (studied for structure only; see CLAUDE.md).
 
+- [x] Site · Electronics bench software suite (Graticule) · dark, scope-graticule grid, app lineup, scroll-spy rail · reference: getartcraft.com
+- [x] Site · Crypto verified-data network (Plumbline) · bold blue hero, rotating words, use-case tabs, developer code · reference: chain.link
 - [ ] Site · Embedded firmware and hardware consultancy · technical, dark, spec-sheet feel; capabilities, case studies, engagement process · reference: oxide.computer
 - [ ] Tool · Color palette builder · generate five-color palettes, lock colors, WCAG contrast grid, export CSS variables and JSON · reference: coolors.co (interaction model only)
 - [ ] Site · Specialty coffee roaster · warm editorial, product grid, subscription call to action · reference: bluebottlecoffee.com

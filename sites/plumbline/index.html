@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plumbline · The verified-data network for onchain finance</title>
+<meta name="description" content="Plumbline delivers signed data feeds, rate-limited cross-network messaging, proof of reserves and offchain compute to 52 networks.">
+<meta name="theme-color" content="#2B3BFF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add("js");</script>
+<script src="main.js" defer></script>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true">
+  <symbol id="i-arrow-r" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-arrow-ur" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M20 20l-4.2-4.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M9 6.5v11l9-5.5z" fill="currentColor"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15.5 5.5h-9a1 1 0 0 0-1 1v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-feeds" viewBox="0 0 24 24"><path d="M3 12h4l2.5-6 5 12 2.5-6h4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-relay" viewBox="0 0 24 24"><path d="M4 8h12M12 4l4 4-4 4M20 16H8M12 12l-4 4 4 4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-attest" viewBox="0 0 24 24"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.9-7 9.5-4.1-1.6-7-5.3-7-9.5V6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2.2 2.2L15.5 10" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-compute" viewBox="0 0 24 24"><rect x="6.5" y="6.5" width="11" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M10 10h4v4h-4zM9.5 3v3.5M14.5 3v3.5M9.5 17.5V21M14.5 17.5V21M3 9.5h3.5M3 14.5h3.5M17.5 9.5H21M17.5 14.5H21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+  <symbol id="i-audit" viewBox="0 0 24 24"><path d="M4 6h11M4 10h8M4 14h5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="15.5" cy="15.5" r="3.8" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M18.3 18.3L21 21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+  <symbol id="i-limit" viewBox="0 0 24 24"><path d="M4 17a8 8 0 1 1 16 0M12 17l4.5-5M3 20.5h18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+  <symbol id="i-load" viewBox="0 0 24 24"><path d="M12 3l9 4.8-9 4.8-9-4.8zM3 12.3l9 4.8 9-4.8M3 16.6l9 4.8 9-4.8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+</svg>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="strip" data-theme="dark">
+  <div class="wrap strip-inner">
+    <a class="strip-back" href="../../">← Portfolio</a>
+    <p class="strip-note">Concept site. Plumbline is a fictional company.</p>
+  </div>
+</div>
+
+<header class="site-header" data-tone="blue">
+  <div class="wrap header-inner">
+    <a class="logo" href="#top" aria-label="Plumbline home">
+      <svg class="logo-mark" viewBox="0 0 28 28" aria-hidden="true"><path d="M14 1.5V8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="14" cy="9.7" r="1.9" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M14 12.2h-3.4L7.6 15.8 14 26.8z" fill="currentColor"/><path d="M14 12.2h3.4l3 3.6L14 26.8z" fill="currentColor" opacity=".55"/></svg>
+      <span class="logo-word">Plumbline</span>
+    </a>
+
+    <nav class="primary-nav" aria-label="Primary">
+      <ul class="nav-list">
+        <li class="nav-item">
+          <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="menu-platform">Platform<svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></button>
+          <div class="mega" id="menu-platform" hidden>
+            <div class="wrap mega-inner">
+              <div class="mega-main">
+                <p class="mega-label">The platform</p>
+                <ul class="mega-grid">
+                  <li><a class="mega-card" href="#platform"><svg class="mega-icon" aria-hidden="true"><use href="#i-feeds"/></svg><span class="mega-title">Feeds</span><span class="mega-desc">Signed market and reference data, pushed on deviation and on a heartbeat.</span></a></li>
+                  <li><a class="mega-card" href="#platform"><svg class="mega-icon" aria-hidden="true"><use href="#i-relay"/></svg><span class="mega-title">Relay</span><span class="mega-desc">Messages and value transfers between networks, inside limits you set.</span></a></li>
+                  <li><a class="mega-card" href="#platform"><svg class="mega-icon" aria-hidden="true"><use href="#i-attest"/></svg><span class="mega-title">Attest</span><span class="mega-desc">Proof of reserves from custodians, bank accounts and wallets.</span></a></li>
+                  <li><a class="mega-card" href="#platform"><svg class="mega-icon" aria-hidden="true"><use href="#i-compute"/></svg><span class="mega-title">Compute</span><span class="mega-desc">Offchain jobs that return a signed, replayable result.</span></a></li>
+                </ul>
+              </div>
+              <div class="mega-side">
+                <p class="mega-label">Operate</p>
+                <ul class="mega-links">
+                  <li><a href="#network">Feed monitor</a></li>
+                  <li><a href="#value">Network scale</a></li>
+                  <li><a href="#why">Security model</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="menu-solutions">Solutions<svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></button>
+          <div class="mega" id="menu-solutions" hidden>
+            <div class="wrap mega-inner">
+              <div class="mega-main">
+                <p class="mega-label">By use case</p>
+                <ul class="mega-links mega-links-2">
+                  <li><a href="#use-cases" data-tab="stablecoins">Stablecoins</a></li>
+                  <li><a href="#use-cases" data-tab="funds">Tokenized funds</a></li>
+                  <li><a href="#use-cases" data-tab="payments">Payments</a></li>
+                  <li><a href="#use-cases" data-tab="lending">Lending</a></li>
+                  <li><a href="#use-cases" data-tab="derivatives">Derivatives</a></li>
+                  <li><a href="#use-cases" data-tab="insurance">Insurance</a></li>
+                </ul>
+              </div>
+              <div class="mega-side">
+                <p class="mega-label">By team</p>
+                <ul class="mega-links">
+                  <li><a href="#use-cases" data-tab="funds">Asset managers</a></li>
+                  <li><a href="#use-cases" data-tab="payments">Banks and payment companies</a></li>
+                  <li><a href="#use-cases" data-tab="derivatives">Exchanges</a></li>
+                  <li><a href="#use-cases" data-tab="insurance">Insurers</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="menu-developers">Developers<svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></button>
+          <div class="mega" id="menu-developers" hidden>
+            <div class="wrap mega-inner">
+              <div class="mega-main">
+                <p class="mega-label">Build</p>
+                <ul class="mega-grid mega-grid-3">
+                  <li><button type="button" class="mega-card" data-open="quickstart-dialog"><span class="mega-title">Quickstart</span><span class="mega-desc">Install the SDK and read a verified value in three steps.</span></button></li>
+                  <li><a class="mega-card" href="#developers"><span class="mega-title">Code samples</span><span class="mega-desc">Solidity and TypeScript examples you can paste and run.</span></a></li>
+                  <li><a class="mega-card" href="#network"><span class="mega-title">Feed monitor</span><span class="mega-desc">Heartbeats, deviation and sources for every feed.</span></a></li>
+                </ul>
+              </div>
+              <div class="mega-side">
+                <p class="mega-label">Support</p>
+                <ul class="mega-links">
+                  <li><button type="button" class="mega-link-btn" data-open="contact-dialog">Talk to an engineer</button></li>
+                  <li><a href="#why">Security model</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="nav-trigger" aria-expanded="false" aria-controls="menu-resources">Resources<svg class="chev" aria-hidden="true"><use href="#i-chev"/></svg></button>
+          <div class="mega" id="menu-resources" hidden>
+            <div class="wrap mega-inner">
+              <div class="mega-main">
+                <p class="mega-label">Learn</p>
+                <ul class="mega-links mega-links-2">
+                  <li><a href="#stories">Customer stories</a></li>
+                  <li><a href="#news">Newsroom</a></li>
+                  <li><a href="#announcements">Announcements and events</a></li>
+                  <li><a href="#newsletter">Monthly newsletter</a></li>
+                </ul>
+              </div>
+              <div class="mega-side">
+                <p class="mega-label">Featured research</p>
+                <button type="button" class="mega-feature" data-read="n3"><span class="mega-title">A field guide to oracle failure modes</span><span class="mega-desc">Twelve ways data goes wrong onchain, and the controls that catch each one.</span></button>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="#news">Research</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <button type="button" class="icon-btn" data-open="search-dialog" aria-label="Search the site"><svg aria-hidden="true"><use href="#i-search"/></svg></button>
+      <a class="btn btn-header" href="#developers">Start building</a>
+      <button type="button" class="icon-btn menu-btn" aria-expanded="false" aria-controls="mobile-panel" aria-label="Open menu"><svg class="i-open" aria-hidden="true"><use href="#i-menu"/></svg><svg class="i-shut" aria-hidden="true"><use href="#i-close"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-panel" id="mobile-panel" hidden>
+  <nav class="m-nav" aria-label="Mobile">
+    <ul class="m-list">
+      <li class="m-group">
+        <button type="button" class="m-trigger" aria-expanded="false" aria-controls="m-platform">Platform<svg aria-hidden="true"><use href="#i-chev"/></svg></button>
+        <ul class="m-sub" id="m-platform" hidden>
+          <li><a href="#platform">Feeds</a></li>
+          <li><a href="#platform">Relay</a></li>
+          <li><a href="#platform">Attest</a></li>
+          <li><a href="#platform">Compute</a></li>
+          <li><a href="#network">Feed monitor</a></li>
+        </ul>
+      </li>
+      <li class="m-group">
+        <button type="button" class="m-trigger" aria-expanded="false" aria-controls="m-solutions">Solutions<svg aria-hidden="true"><use href="#i-chev"/></svg></button>
+        <ul class="m-sub" id="m-solutions" hidden>
+          <li><a href="#use-cases" data-tab="stablecoins">Stablecoins</a></li>
+          <li><a href="#use-cases" data-tab="funds">Tokenized funds</a></li>
+          <li><a href="#use-cases" data-tab="payments">Payments</a></li>
+          <li><a href="#use-cases" data-tab="lending">Lending</a></li>
+          <li><a href="#use-cases" data-tab="derivatives">Derivatives</a></li>
+          <li><a href="#use-cases" data-tab="insurance">Insurance</a></li>
+        </ul>
+      </li>
+      <li class="m-group">
+        <button type="button" class="m-trigger" aria-expanded="false" aria-controls="m-developers">Developers<svg aria-hidden="true"><use href="#i-chev"/></svg></button>
+        <ul class="m-sub" id="m-developers" hidden>
+          <li><button type="button" data-open="quickstart-dialog">Quickstart</button></li>
+          <li><a href="#developers">Code samples</a></li>
+          <li><a href="#why">Security model</a></li>
+        </ul>
+      </li>
+      <li class="m-group">
+        <button type="button" class="m-trigger" aria-expanded="false" aria-controls="m-resources">Resources<svg aria-hidden="true"><use href="#i-chev"/></svg></button>
+        <ul class="m-sub" id="m-resources" hidden>
+          <li><a href="#stories">Customer stories</a></li>
+          <li><a href="#news">Newsroom</a></li>
+          <li><a href="#announcements">Announcements and events</a></li>
+          <li><a href="#newsletter">Newsletter</a></li>
+        </ul>
+      </li>
+      <li class="m-group"><a class="m-link" href="#news">Research</a></li>
+    </ul>
+  </nav>
+  <div class="m-actions">
+    <a class="btn btn-blue" href="#developers">Start building</a>
+    <button type="button" class="btn btn-outline" data-open="contact-dialog">Talk to an expert</button>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="hero" id="top" data-theme="blue" aria-labelledby="hero-title">
+    <canvas class="hero-canvas" aria-hidden="true"></canvas>
+    <div class="wrap hero-wrap">
+      <div class="hero-left">
+        <p class="eyebrow eyebrow-live"><span class="live-dot" aria-hidden="true"></span>Live on 52 networks</p>
+        <h1 class="hero-title" id="hero-title">
+          <span class="hero-lead">Verified data for</span>
+          <span class="sr-only">lending, stablecoins, treasuries, payments, derivatives, insurance, games and everything else onchain.</span>
+          <span class="rotator" aria-hidden="true"><span class="rotator-track"><span class="rw">lending</span><span class="rw">stablecoins</span><span class="rw">treasuries</span><span class="rw">payments</span><span class="rw">derivatives</span><span class="rw">insurance</span><span class="rw">games</span><span class="rw">everything</span></span></span>
+        </h1>
+      </div>
+      <div class="hero-right">
+        <p class="hero-copy">Plumbline is the verified-data network for onchain finance. Independent sources sign every value, every message stays inside the limits you set, and anyone can check the proof.</p>
+        <div class="actions">
+          <a class="btn btn-white" href="#developers">Start building</a>
+          <a class="btn btn-ghost" href="#platform">Platform overview</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section partners" id="partners" data-theme="white" aria-labelledby="partners-title">
+    <div class="wrap partners-wrap">
+      <h2 class="partners-label" id="partners-title">Trusted by teams at</h2>
+      <div class="marquee">
+        <div class="marquee-track">
+          <ul class="marquee-list">
+            <li><span class="wm wm-1"><svg class="wm-glyph" viewBox="0 0 16 16" aria-hidden="true"><rect x="2.5" y="2.5" width="11" height="11" transform="rotate(45 8 8)"/></svg>HALVARD</span></li>
+            <li><span class="wm wm-2">corvant<span class="wm-dot" aria-hidden="true"></span></span></li>
+            <li><span class="wm wm-3"><span class="wm-it">Ostrine</span><span class="wm-box">PAY</span></span></li>
+            <li><span class="wm wm-4"><svg class="wm-glyph" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2l6.5 12h-13z"/></svg>TESSALY</span></li>
+            <li><span class="wm wm-5">Quillmark</span></li>
+            <li><span class="wm wm-6"><span>BRISANDE</span><span>MUTUAL</span></span></li>
+            <li><span class="wm wm-7"><svg class="wm-glyph" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 11a6 6 0 0 1 12 0z"/></svg>lumora</span></li>
+            <li><span class="wm wm-8">Kettlewick <span class="wm-amp">&amp;</span> Co.</span></li>
+            <li><span class="wm wm-9">[ VANTOREL ]</span></li>
+            <li><span class="wm wm-10">Marrowby</span></li>
+          </ul>
+          <ul class="marquee-list marquee-dupe" aria-hidden="true">
+            <li><span class="wm wm-1"><svg class="wm-glyph" viewBox="0 0 16 16"><rect x="2.5" y="2.5" width="11" height="11" transform="rotate(45 8 8)"/></svg>HALVARD</span></li>
+            <li><span class="wm wm-2">corvant<span class="wm-dot"></span></span></li>
+            <li><span class="wm wm-3"><span class="wm-it">Ostrine</span><span class="wm-box">PAY</span></span></li>
+            <li><span class="wm wm-4"><svg class="wm-glyph" viewBox="0 0 16 16"><path d="M8 2l6.5 12h-13z"/></svg>TESSALY</span></li>
+            <li><span class="wm wm-5">Quillmark</span></li>
+            <li><span class="wm wm-6"><span>BRISANDE</span><span>MUTUAL</span></span></li>
+            <li><span class="wm wm-7"><svg class="wm-glyph" viewBox="0 0 16 16"><path d="M2 11a6 6 0 0 1 12 0z"/></svg>lumora</span></li>
+            <li><span class="wm wm-8">Kettlewick <span class="wm-amp">&amp;</span> Co.</span></li>
+            <li><span class="wm wm-9">[ VANTOREL ]</span></li>
+            <li><span class="wm wm-10">Marrowby</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section announcements" id="announcements" data-theme="white" aria-labelledby="ann-title">
+    <div class="wrap">
+      <div class="section-head section-head-row">
+        <h2 class="h-sm" id="ann-title">What's new</h2>
+        <a class="link-arrow" href="#news">All news<svg aria-hidden="true"><use href="#i-arrow-r"/></svg></a>
+      </div>
+      <ul class="ann-grid">
+        <li class="ann-card reveal">
+          <p class="tag">New network</p>
+          <h3 class="ann-title"><button type="button" class="stretch" data-read="n2">Relay now reaches 52 networks, with transfer limits set per asset</button></h3>
+          <p class="ann-foot"><time datetime="2026-11-12">Nov 12, 2026</time><svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></p>
+        </li>
+        <li class="ann-card reveal">
+          <p class="tag">Upgrade</p>
+          <h3 class="ann-title"><button type="button" class="stretch" data-read="a2">Feeds v4 cuts update latency to 400 milliseconds on fast networks</button></h3>
+          <p class="ann-foot"><time datetime="2026-11-03">Nov 3, 2026</time><svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></p>
+        </li>
+        <li class="ann-card reveal">
+          <p class="tag">Research</p>
+          <h3 class="ann-title"><button type="button" class="stretch" data-read="a3">How we measure source independence across 2,400 feeds</button></h3>
+          <p class="ann-foot"><time datetime="2026-10-28">Oct 28, 2026</time><svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></p>
+        </li>
+        <li class="ann-card reveal">
+          <p class="tag">Event</p>
+          <h3 class="ann-title"><button type="button" class="stretch" data-read="a4">Plumb Summit 2027 opens its call for speakers</button></h3>
+          <p class="ann-foot"><time datetime="2026-10-21">Oct 21, 2026</time><svg aria-hidden="true"><use href="#i-arrow-ur"/></svg></p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section platform" id="platform" data-theme="dark" aria-labelledby="platform-title">
+    <div class="wrap platform-grid">
+      <div class="platform-copy">
+        <p class="eyebrow">The platform</p>
+        <h2 id="platform-title">One network for data, messages and proof.</h2>
+        <p class="lede">Plumbline gives onchain products a shared foundation: values that independent sources sign, messages that respect limits, and reserves anyone can check. Start with one service and add the rest on the same security.</p>
+        <ol class="products">
+          <li class="product reveal"><span class="product-num">01</span><svg class="product-icon" aria-hidden="true"><use href="#i-feeds"/></svg><span class="product-name">Feeds</span><span class="product-desc">Market and reference data signed by independent sources, pushed on deviation and on a heartbeat.</span></li>
+          <li class="product reveal"><span class="product-num">02</span><svg class="product-icon" aria-hidden="true"><use href="#i-relay"/></svg><span class="product-name">Relay</span><span class="product-desc">Messages and value transfers between networks, inside rate limits you set for each lane.</span></li>
+          <li class="product reveal"><span class="product-num">03</span><svg class="product-icon" aria-hidden="true"><use href="#i-attest"/></svg><span class="product-name">Attest</span><span class="product-desc">Proof of reserves from custodians, bank accounts and wallets, published on a schedule.</span></li>
+          <li class="product reveal"><span class="product-num">04</span><svg class="product-icon" aria-hidden="true"><use href="#i-compute"/></svg><span class="product-name">Compute</span><span class="product-desc">Offchain jobs with a signed, replayable result, for logic too heavy to run onchain.</span></li>
+        </ol>
+        <div class="actions">
+          <a class="btn btn-lime" href="#use-cases">See it in production</a>
+          <button type="button" class="btn btn-ghost" data-open="quickstart-dialog">Open the quickstart</button>
+        </div>
+      </div>
+      <figure class="iso-figure">
+<svg class="iso" viewBox="0 0 560 500" role="img" aria-labelledby="iso-title"><title id="iso-title">Three stacked network layers aligned under a plumb bob, with a vault, a signed document and data blocks linked by glowing traces</title><defs>
+<linearGradient id="isoTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7C8BFF" stop-opacity=".22"/><stop offset="1" stop-color="#2B3BFF" stop-opacity=".05"/></linearGradient>
+<linearGradient id="isoTopLime" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F0FFB0"/><stop offset="1" stop-color="#D7FF3A"/></linearGradient>
+<radialGradient id="isoGlow"><stop offset="0" stop-color="#D7FF3A" stop-opacity=".55"/><stop offset="1" stop-color="#D7FF3A" stop-opacity="0"/></radialGradient>
+<radialGradient id="isoHalo"><stop offset="0" stop-color="#5C6BFF" stop-opacity=".5"/><stop offset="1" stop-color="#2B3BFF" stop-opacity="0"/></radialGradient>
+</defs><ellipse class="halo" cx="280" cy="300" rx="260" ry="170" fill="url(#isoHalo)"/><g class="plate plate-a"><g class="slab"><polygon class="f-left" points="36.1,340 280,480.8 280,489.6 36.1,348.8"/><polygon class="f-right" points="523.9,340 280,480.8 280,489.6 523.9,348.8"/><polygon class="f-top" points="280,199.2 523.9,340 280,480.8 36.1,340"/></g><g class="grid"><line x1="310.5" y1="216.8" x2="66.6" y2="357.6"/><line x1="249.5" y1="216.8" x2="493.4" y2="357.6"/><line x1="341" y1="234.4" x2="97.1" y2="375.2"/><line x1="219" y1="234.4" x2="462.9" y2="375.2"/><line x1="371.5" y1="252" x2="127.6" y2="392.8"/><line x1="188.5" y1="252" x2="432.4" y2="392.8"/><line x1="401.9" y1="269.6" x2="158.1" y2="410.4"/><line x1="158.1" y1="269.6" x2="401.9" y2="410.4"/><line x1="432.4" y1="287.2" x2="188.5" y2="428"/><line x1="127.6" y1="287.2" x2="371.5" y2="428"/><line x1="462.9" y1="304.8" x2="219" y2="445.6"/><line x1="97.1" y1="304.8" x2="341" y2="445.6"/><line x1="493.4" y1="322.4" x2="249.5" y2="463.2"/><line x1="66.6" y1="322.4" x2="310.5" y2="463.2"/></g><ellipse class="ring ring-outer" cx="280" cy="340" rx="53.9" ry="31.1"/><ellipse class="ring ring-inner" cx="280" cy="340" rx="29.6" ry="17.1"/><polyline class="trace" points="142.8,326.8 200,293.8 241.9,318"/><polyline class="trace trace-b" points="287.6,423.6 356.2,384 318.1,362"/><polyline class="trace trace-c" points="436.2,346.6 352.4,298.2 318.1,318"/><g class="obj vault"><polygon class="f-left" points="99,286.1 140.9,310.3 140.9,352.1 99,327.9"/><polygon class="f-right" points="182.8,286.1 140.9,310.3 140.9,352.1 182.8,327.9"/><polygon class="f-top" points="140.9,261.9 182.8,286.1 140.9,310.3 99,286.1"/></g><polygon class="door" points="132.2,326.4 132,323.8 131.4,321.1 130.5,318.4 129.3,315.7 127.8,313.1 126.1,310.6 124.1,308.5 122.1,306.7 120,305.2 117.8,304.2 115.8,303.7 113.9,303.6 112.1,304 110.6,304.9 109.4,306.2 108.5,307.9 108,309.9 107.8,312.3 108,314.8 108.5,317.5 109.4,320.3 110.6,323 112.1,325.6 113.9,328 115.8,330.1 117.8,332 120,333.4 122.1,334.4 124.1,335 126.1,335 127.8,334.6 129.3,333.8 130.5,332.5 131.4,330.8 132,328.7"/><polygon class="door-inner" points="126.7,323.2 126.6,321.8 126.3,320.3 125.8,318.8 125.1,317.3 124.3,315.9 123.3,314.5 122.3,313.4 121.1,312.4 120,311.6 118.8,311 117.7,310.7 116.6,310.7 115.6,310.9 114.8,311.4 114.2,312.1 113.7,313 113.4,314.2 113.3,315.4 113.4,316.9 113.7,318.3 114.2,319.8 114.8,321.3 115.6,322.8 116.6,324.1 117.7,325.3 118.8,326.3 120,327.1 121.1,327.6 122.3,327.9 123.3,328 124.3,327.7 125.1,327.3 125.8,326.5 126.3,325.6 126.6,324.5"/><path class="door-handle" d="M113.9 315.8L126.1 322.8M120 326.4L120 312.3"/><g class="obj sheet"><polygon class="f-left" points="241.9,425.8 280,447.8 280,450 241.9,428"/><polygon class="f-right" points="329.5,419.2 280,447.8 280,450 329.5,421.4"/><polygon class="f-top" points="291.4,397.2 329.5,419.2 280,447.8 241.9,425.8"/></g><g class="obj sheet"><polygon class="f-left" points="245.7,420.5 283.8,442.5 283.8,444.7 245.7,422.7"/><polygon class="f-right" points="333.3,413.9 283.8,442.5 283.8,444.7 333.3,416.1"/><polygon class="f-top" points="295.2,391.9 333.3,413.9 283.8,442.5 245.7,420.5"/></g><g class="obj sheet sheet-top"><polygon class="f-left" points="249.5,415.2 287.6,437.2 287.6,439.4 249.5,417.4"/><polygon class="f-right" points="337.2,408.6 287.6,437.2 287.6,439.4 337.2,410.8"/><polygon class="f-top" points="299.1,386.6 337.2,408.6 287.6,437.2 249.5,415.2"/></g><line class="doc-line" x1="295.2" y1="395.4" x2="318.1" y2="408.6"/><line class="doc-line" x1="287.6" y1="399.8" x2="316.2" y2="416.3"/><line class="doc-line" x1="280" y1="404.2" x2="299.1" y2="415.2"/><polyline class="doc-check" points="278.1,414.1 276.2,421.8 299.1,421.8"/><g class="bob-cube"><g class="obj cube-lime"><polygon class="f-left" points="413.4,320.2 436.2,333.4 436.2,359.8 413.4,346.6"/><polygon class="f-right" points="459.1,320.2 436.2,333.4 436.2,359.8 459.1,346.6"/><polygon class="f-top" points="436.2,307 459.1,320.2 436.2,333.4 413.4,320.2"/></g></g></g><line class="plumb-dash" x1="280" y1="340" x2="280" y2="265.2"/><g class="plate plate-b float-b"><g class="slab slab-mid"><polygon class="f-left" points="104.7,265.2 280,366.4 280,373.4 104.7,272.2"/><polygon class="f-right" points="455.3,265.2 280,366.4 280,373.4 455.3,272.2"/><polygon class="f-top" points="280,164 455.3,265.2 280,366.4 104.7,265.2"/></g><ellipse class="ring ring-outer" cx="280" cy="265.2" rx="40.4" ry="23.3"/><ellipse class="ring ring-inner" cx="280" cy="265.2" rx="21.6" ry="12.4"/><polyline class="trace trace-b" points="193.5,264.5 220.2,279.9 240,268.5"/><polyline class="trace trace-c" points="371.5,260.8 339.1,279.5 320,268.5"/><g class="float-cube"><g class="obj cube-blue"><polygon class="f-left" points="167.6,239.9 184.7,249.8 184.7,269.6 167.6,259.7"/><polygon class="f-right" points="201.9,239.9 184.7,249.8 184.7,269.6 201.9,259.7"/><polygon class="f-top" points="184.7,230 201.9,239.9 184.7,249.8 167.6,239.9"/></g></g><g class="float-cube float-cube-2"><g class="obj cube-white"><polygon class="f-left" points="363.8,238.8 379.1,247.6 379.1,265.2 363.8,256.4"/><polygon class="f-right" points="394.3,238.8 379.1,247.6 379.1,265.2 394.3,256.4"/><polygon class="f-top" points="379.1,230 394.3,238.8 379.1,247.6 363.8,238.8"/></g></g></g><line class="plumb-dash" x1="280" y1="265.2" x2="280" y2="199.2"/><g class="plate plate-c float-c"><g class="slab slab-top"><polygon class="f-left" points="165.7,199.2 280,265.2 280,270.5 165.7,204.5"/><polygon class="f-right" points="394.3,199.2 280,265.2 280,270.5 394.3,204.5"/><polygon class="f-top" points="280,133.2 394.3,199.2 280,265.2 165.7,199.2"/></g><ellipse class="glow" cx="280" cy="199.2" rx="70" ry="40" fill="url(#isoGlow)"/><ellipse class="ring ring-outer" cx="280" cy="199.2" rx="32.3" ry="18.7"/><ellipse class="ring ring-core" cx="280" cy="199.2" rx="16.2" ry="9.3"/></g><circle class="packet packet-1" cx="280" cy="340" r="3"/><circle class="packet packet-2" cx="280" cy="340" r="3"/><circle class="packet packet-3" cx="280" cy="340" r="3"/><line class="plumb-dash plumb-dash-lime" x1="280" y1="130.4" x2="280" y2="199.2"/><g class="sway"><line class="plumb-line" x1="280" y1="0" x2="280" y2="55.4"/><circle class="bob-cap" cx="280" cy="57.4" r="3.5"/><polygon class="bob f1" points="280,60.4 270,60.4 261,73.4 280,73.4"/><polygon class="bob f2" points="280,60.4 290,60.4 299,73.4 280,73.4"/><polygon class="bob f3" points="261,73.4 280,124.4 280,73.4"/><polygon class="bob f4" points="299,73.4 280,124.4 280,73.4"/><polyline class="bob-rim" points="270,60.4 261,73.4 280,124.4 299,73.4 290,60.4 270,60.4"/></g></svg>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section value" id="value" data-theme="dark" aria-labelledby="value-title">
+    <div class="wrap value-wrap">
+      <h2 class="value-label" id="value-title">Total value verified</h2>
+      <p class="value-number"><span class="value-cur">$</span><span class="value-digits" id="value-digits">18,402,551,209,734</span></p>
+      <p class="value-note">Simulated figure for this concept: the running total of value secured by Plumbline data and messages since 2021.</p>
+      <dl class="stats">
+        <div class="stat reveal"><dt>Networks connected</dt><dd>52</dd></div>
+        <div class="stat reveal"><dt>Live data feeds</dt><dd>2,400+</dd></div>
+        <div class="stat reveal"><dt>Round uptime since 2021</dt><dd>99.99%</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section usecases" id="use-cases" data-theme="light" aria-labelledby="uc-title">
+    <div class="wrap">
+      <div class="section-head section-head-split">
+        <div>
+          <p class="eyebrow">Use cases</p>
+          <h2 id="uc-title">Built for the products finance is moving onchain.</h2>
+        </div>
+        <p class="section-intro">From money funds to crop insurance, the same signed data and the same limits sit underneath. Pick a market to see how teams use them.</p>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Use cases" data-tabs="uc">
+        <button type="button" class="tab" role="tab" id="tab-stablecoins" aria-controls="panel-stablecoins" aria-selected="true" data-key="stablecoins">Stablecoins</button>
+        <button type="button" class="tab" role="tab" id="tab-funds" aria-controls="panel-funds" aria-selected="false" tabindex="-1" data-key="funds">Tokenized funds</button>
+        <button type="button" class="tab" role="tab" id="tab-payments" aria-controls="panel-payments" aria-selected="false" tabindex="-1" data-key="payments">Payments</button>
+        <button type="button" class="tab" role="tab" id="tab-lending" aria-controls="panel-lending" aria-selected="false" tabindex="-1" data-key="lending">Lending</button>
+        <button type="button" class="tab" role="tab" id="tab-derivatives" aria-controls="panel-derivatives" aria-selected="false" tabindex="-1" data-key="derivatives">Derivatives</button>
+        <button type="button" class="tab" role="tab" id="tab-insurance" aria-controls="panel-insurance" aria-selected="false" tabindex="-1" data-key="insurance">Insurance</button>
+      </div>
+
+      <div class="tabpanel uc-panel" role="tabpanel" id="panel-stablecoins" aria-labelledby="tab-stablecoins" tabindex="0">
+        <div class="uc-copy">
+          <h3>Run a stablecoin with proof built in</h3>
+          <p>Reserve data, mint limits and cross-network supply live on one network, so holders and auditors read the same numbers you do.</p>
+          <ul class="caps">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Hourly proof of reserves from custodians and bank accounts</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Mint limits that tighten on their own when reserves drift</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Supply moves between networks inside per-lane caps</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>A read-only evidence trail for auditors and supervisors</li>
+          </ul>
+        </div>
+        <article class="case">
+          <div class="case-art art-2" aria-hidden="true"><span class="case-art-name">Ostrine Pay</span></div>
+          <div class="case-body">
+            <p class="tag">Case study</p>
+            <h4 class="case-title">Ostrine Pay publishes a reserve attestation every hour</h4>
+            <p>Ostrine moved from a monthly reserve letter to hourly attestations and has not had a disputed redemption since.</p>
+            <button type="button" class="link-arrow" data-read="st2">Read the story<svg aria-hidden="true"><use href="#i-arrow-r"/></svg></button>
+          </div>
+        </article>
+      </div>
+
+      <div class="tabpanel uc-panel" role="tabpanel" id="panel-funds" aria-labelledby="tab-funds" tabindex="0" hidden>
+        <div class="uc-copy">
+          <h3>Strike the NAV once and use it everywhere</h3>
+          <p>The fund administrator signs the net asset value once, and Plumbline delivers it to every network where the fund's shares live.</p>
+          <ul class="caps">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>NAV delivered onchain the moment the administrator signs it</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Subscriptions and redemptions across networks in one flow</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Holder registers kept in sync with the transfer agent</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Corporate actions published as signed, timestamped events</li>
+          </ul>
+        </div>
+        <article class="case">
+          <div class="case-art art-1" aria-hidden="true"><span class="case-art-name">Halvard</span></div>
+          <div class="case-body">
+            <p class="tag">Case study</p>
+            <h4 class="case-title">Halvard runs a tokenized money fund on four networks</h4>
+            <p>One signed NAV a day now reaches every share class, wherever shareholders hold it.</p>
+            <button type="button" class="link-arrow" data-read="st1">Read the story<svg aria-hidden="true"><use href="#i-arrow-r"/></svg></button>
+          </div>
+        </article>
+      </div>
+
+      <div class="tabpanel uc-panel" role="tabpanel" id="panel-payments" aria-labelledby="tab-payments" tabindex="0" hidden>
+        <div class="uc-copy">
+          <h3>Settle across ledgers in seconds</h3>
+          <p>Relay carries payment instructions between bank ledgers and public networks, with exchange rates from independent sources at the moment of settlement.</p>
+          <ul class="caps">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Exchange rates from independent sources at settlement time</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Instructions relayed between bank ledgers and public networks</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Delivery versus payment with automatic rollback</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Reconciliation files your treasury team already reads</li>
+          </ul>
+        </div>
+        <article class="case">
+          <div class="case-art art-5" aria-hidden="true"><span class="case-art-name">Kettlewick &amp; Co.</span></div>
+          <div class="case-body">
+            <p class="tag">Case study</p>
+            <h4 class="case-title">Kettlewick &amp; Co. pays suppliers in 40 seconds, not two days</h4>
+            <p>Payouts in 31 currencies now settle in under a minute, with every rate recorded next to the payment.</p>
+            <button type="button" class="link-arrow" data-read="n4">Read the story<svg aria-hidden="true"><use href="#i-arrow-r"/></svg></button>
+          </div>
+        </article>
+      </div>
+
+      <div class="tabpanel uc-panel" role="tabpanel" id="panel-lending" aria-labelledby="tab-lending" tabindex="0" hidden>
+        <div class="uc-copy">
+          <h3>Keep liquidations fair when markets move</h3>
+          <p>Collateral values refresh on deviation and on a heartbeat, and circuit breakers trip when sources disagree.</p>
+          <ul class="caps">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Collateral values refreshed on deviation and on a heartbeat</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Circuit breakers when sources disagree past your threshold</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Interest rate references from regulated benchmarks</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Every liquidation linked to the round that triggered it</li>
+          </ul>
+        </div>
+        <article class="case">
+          <div class="case-art art-6" aria-hidden="true"><span class="case-art-name">Corvant</span></div>
+          <div class="case-body">
+            <p class="tag">Case study</p>
+            <h4 class="case-title">Corvant kept liquidations orderly through a 9% intraday drop</h4>
+            <p>Rounds every 400 milliseconds and a disagreement breaker meant no bad debt and no disputed liquidations.</p>
+            <button type="button" class="link-arrow" data-read="st6">Read the story<svg aria-hidden="true"><use href="#i-arrow-r"/></svg></button>
+          </div>
+        </article>
+      </div>
+
+      <div class="tabpanel uc-panel" role="tabpanel" id="panel-derivatives" aria-labelledby="tab-derivatives" tabindex="0" hidden>
+        <div class="uc-copy">
+          <h3>Mark and settle from the same sources</h3>
+          <p>Low-latency streams carry a signed report for every update, and settlement uses the same sources as your marks.</p>
+          <ul class="caps">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Low-latency streams with a signed report for each update</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Settlement values from the same sources as your marks</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Funding inputs published on a fixed schedule</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Replayable history when a counterparty disputes a fill</li>
+          </ul>
+        </div>
+        <article class="case">
+          <div class="case-art art-3" aria-hidden="true"><span class="case-art-name">Lumora Exchange</span></div>
+          <div class="case-body">
+            <p class="tag">Case study</p>
+            <h4 class="case-title">Lumora Exchange marks 300 markets from one stream</h4>
+            <p>Signed sub-second reports replaced three data vendors and a weekly reconciliation.</p>
+            <button type="button" class="link-arrow" data-read="st3">Read the story<svg aria-hidden="true"><use href="#i-arrow-r"/></svg></button>
+          </div>
+        </article>
+      </div>
+
+      <div class="tabpanel uc-panel" role="tabpanel" id="panel-insurance" aria-labelledby="tab-insurance" tabindex="0" hidden>
+        <div class="uc-copy">
+          <h3>Pay claims when the index says so</h3>
+          <p>Weather and catastrophe indices arrive from many stations, and the network evaluates each trigger in the open.</p>
+          <ul class="caps">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Weather and catastrophe indices from multiple stations</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Parametric triggers evaluated by the network, not the insurer</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Payouts sent to policyholders automatically</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Every payout traceable to the reading behind it</li>
+          </ul>
+        </div>
+        <article class="case">
+          <div class="case-art art-4" aria-hidden="true"><span class="case-art-name">Brisande Mutual</span></div>
+          <div class="case-body">
+            <p class="tag">Case study</p>
+            <h4 class="case-title">Brisande Mutual paid 11,000 crop claims in a week</h4>
+            <p>When the rains failed, payouts went out on their own, each linked to the station readings behind it.</p>
+            <button type="button" class="link-arrow" data-read="st4">Read the story<svg aria-hidden="true"><use href="#i-arrow-r"/></svg></button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section why" id="why" data-theme="white" aria-labelledby="why-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Why Plumbline</p>
+        <h2 id="why-title">The standard for data that has to be right.</h2>
+      </div>
+      <ul class="pillars">
+        <li class="pillar reveal">
+          <div class="pillar-top"><svg class="pillar-icon" aria-hidden="true"><use href="#i-audit"/></svg><span class="pillar-num">01</span></div>
+          <h3>Data you can audit</h3>
+          <p>Every value carries its sources, signatures and timestamps. Anyone can replay a round and get the same answer we did.</p>
+          <p class="pillar-stat"><strong>4.2M</strong> rounds replayed by third parties last month</p>
+        </li>
+        <li class="pillar reveal">
+          <div class="pillar-top"><svg class="pillar-icon" aria-hidden="true"><use href="#i-limit"/></svg><span class="pillar-num">02</span></div>
+          <h3>Messaging with limits</h3>
+          <p>Relay enforces rate limits on every lane, and a separate risk network can pause a lane before a problem spreads.</p>
+          <p class="pillar-stat"><strong>0</strong> unauthorized transfers since launch</p>
+        </li>
+        <li class="pillar reveal">
+          <div class="pillar-top"><svg class="pillar-icon" aria-hidden="true"><use href="#i-load"/></svg><span class="pillar-num">03</span></div>
+          <h3>Proven under load</h3>
+          <p>Five years of rounds through market crashes, network halts and record volume, with a public report for every incident.</p>
+          <p class="pillar-stat"><strong>40B+</strong> rounds delivered since 2021</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section dev" id="developers" data-theme="dark" aria-labelledby="dev-title">
+    <div class="wrap dev-grid">
+      <div class="dev-copy">
+        <p class="eyebrow">Developers</p>
+        <h2 id="dev-title">Ship in an afternoon. Audit it forever.</h2>
+        <p class="lede">Read a signed value in a few lines, test against a simulator that replays real market days, and deploy to any of 52 networks with the same interface.</p>
+        <ul class="checks">
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>SDKs for Solidity, TypeScript, Rust and Go</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Free testnet feeds on every supported network</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>A local simulator that replays historic market days</li>
+        </ul>
+        <div class="actions">
+          <button type="button" class="btn btn-lime" data-open="quickstart-dialog">Open the quickstart</button>
+          <button type="button" class="btn btn-ghost" data-open="contact-dialog">Talk to an engineer</button>
+        </div>
+      </div>
+      <div class="code-window reveal">
+        <div class="code-bar">
+          <div class="code-tabs" role="tablist" aria-label="Code sample language" data-tabs="code">
+            <button type="button" class="code-tab" role="tab" id="code-tab-sol" aria-controls="code-sol" aria-selected="true" data-key="sol">Solidity</button>
+            <button type="button" class="code-tab" role="tab" id="code-tab-ts" aria-controls="code-ts" aria-selected="false" tabindex="-1" data-key="ts">TypeScript</button>
+          </div>
+          <button type="button" class="copy-btn" id="copy-btn"><svg aria-hidden="true"><use href="#i-copy"/></svg><span>Copy</span></button>
+        </div>
+        <div class="code-panel" role="tabpanel" id="code-sol" aria-labelledby="code-tab-sol" tabindex="0">
+          <p class="code-file">contracts/CollateralCheck.sol</p>
+<pre><code><span class="c">// SPDX-License-Identifier: MIT</span>
+<span class="k">pragma</span> solidity <span class="n">^0.8.24</span>;
+
+<span class="k">import</span> {<span class="t">IPlumbFeed</span>} <span class="k">from</span> <span class="s">"@plumbline/contracts/IPlumbFeed.sol"</span>;
+
+<span class="k">contract</span> <span class="t">CollateralCheck</span> {
+    <span class="t">IPlumbFeed</span> <span class="k">public immutable</span> feed;
+    <span class="t">uint256</span> <span class="k">public constant</span> MAX_AGE = <span class="n">1 hours</span>;
+
+    <span class="k">constructor</span>(<span class="t">address</span> feedAddress) {
+        feed = <span class="t">IPlumbFeed</span>(feedAddress);
+    }
+
+    <span class="k">function</span> <span class="f">latestValue</span>() <span class="k">external view returns</span> (<span class="t">int256</span>) {
+        (<span class="t">int256</span> value, <span class="t">uint64</span> updatedAt, ) = feed.<span class="f">latestRound</span>();
+        <span class="f">require</span>(block.timestamp - updatedAt &lt;= MAX_AGE, <span class="s">"stale"</span>);
+        <span class="k">return</span> value;
+    }
+}</code></pre>
+        </div>
+        <div class="code-panel" role="tabpanel" id="code-ts" aria-labelledby="code-tab-ts" tabindex="0" hidden>
+          <p class="code-file">scripts/read-feed.ts</p>
+<pre><code><span class="k">import</span> { <span class="f">createClient</span> } <span class="k">from</span> <span class="s">"@plumbline/sdk"</span>;
+
+<span class="k">const</span> plumb = <span class="f">createClient</span>({ network: <span class="s">"testnet"</span> });
+
+<span class="c">// Read the latest round, then check its signatures</span>
+<span class="c">// before you use the value anywhere.</span>
+<span class="k">const</span> round = <span class="k">await</span> plumb.feeds.<span class="f">latest</span>(<span class="s">"EUR/USD"</span>);
+<span class="k">await</span> plumb.<span class="f">verify</span>(round);
+
+console.<span class="f">log</span>(round.value, round.sources.length, round.updatedAt);</code></pre>
+        </div>
+        <p class="sr-only" id="copy-status" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section network" id="network" data-theme="light" aria-labelledby="net-title">
+    <div class="wrap net-grid">
+      <div class="net-copy">
+        <p class="eyebrow">Network</p>
+        <h2 id="net-title">Every feed and every heartbeat, in the open.</h2>
+        <p class="lede">Each value shows its sources, its last round and how far it moved. You set your own deviation and freshness limits, and the monitor flags a feed before it crosses them.</p>
+        <dl class="legend">
+          <div><dt>Heartbeat</dt><dd>The longest a feed may go without a new round.</dd></div>
+          <div><dt>Deviation</dt><dd>The move that forces a new round early.</dd></div>
+        </dl>
+      </div>
+      <div class="monitor reveal">
+        <div class="monitor-head">
+          <p class="monitor-title"><span class="live-dot" aria-hidden="true"></span>Feed monitor</p>
+          <p class="badge-sim">Simulated data</p>
+        </div>
+        <div class="table-wrap">
+        <table class="feeds">
+          <caption class="sr-only">Simulated feed values that update every few seconds</caption>
+          <thead>
+            <tr><th scope="col">Feed</th><th scope="col" class="num">Value</th><th scope="col" class="num col-chg">Change</th><th scope="col" class="num col-src">Sources</th><th scope="col">Last round</th></tr>
+          </thead>
+          <tbody id="feed-rows">
+            <tr data-v="1.0842" data-dp="4" data-vol="0.00035"><th scope="row">EUR / USD</th><td class="num v">1.0842</td><td class="num col-chg d">+0.00%</td><td class="num col-src">21</td><td class="hb"><span class="hb-dot"></span><span class="hb-t">1s ago</span></td></tr>
+            <tr data-v="1.2675" data-dp="4" data-vol="0.0004"><th scope="row">GBP / USD</th><td class="num v">1.2675</td><td class="num col-chg d">+0.00%</td><td class="num col-src">19</td><td class="hb"><span class="hb-dot"></span><span class="hb-t">3s ago</span></td></tr>
+            <tr data-v="151.38" data-dp="2" data-vol="0.05"><th scope="row">USD / JPY</th><td class="num v">151.38</td><td class="num col-chg d">+0.00%</td><td class="num col-src">18</td><td class="hb"><span class="hb-dot"></span><span class="hb-t">2s ago</span></td></tr>
+            <tr data-v="2412.60" data-dp="2" data-vol="0.8"><th scope="row">Gold, troy oz</th><td class="num v">2,412.60</td><td class="num col-chg d">+0.00%</td><td class="num col-src">15</td><td class="hb"><span class="hb-dot"></span><span class="hb-t">4s ago</span></td></tr>
+            <tr data-v="4.38" data-dp="2" data-vol="0.004" data-unit="%"><th scope="row">3-month bill rate</th><td class="num v">4.38%</td><td class="num col-chg d">+0.00%</td><td class="num col-src">9</td><td class="hb"><span class="hb-dot"></span><span class="hb-t">6s ago</span></td></tr>
+            <tr data-v="2184" data-dp="0" data-vol="1.6"><th scope="row">Freight index</th><td class="num v">2,184</td><td class="num col-chg d">+0.00%</td><td class="num col-src">7</td><td class="hb"><span class="hb-dot"></span><span class="hb-t">5s ago</span></td></tr>
+            <tr data-v="63.2" data-dp="1" data-vol="0.12" data-unit=" mm"><th scope="row">Rainfall index</th><td class="num v">63.2 mm</td><td class="num col-chg d">+0.00%</td><td class="num col-src">12</td><td class="hb"><span class="hb-dot"></span><span class="hb-t">8s ago</span></td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="monitor-foot">Values are generated in your browser for this concept. They are not real market data.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section stories" id="stories" data-theme="dark" aria-labelledby="stories-title">
+    <div class="wrap">
+      <div class="section-head section-head-split">
+        <div>
+          <p class="eyebrow">Customer stories</p>
+          <h2 id="stories-title">Teams shipping on verified data.</h2>
+        </div>
+        <div class="car-controls">
+          <button type="button" class="car-btn" data-dir="-1" aria-controls="stories-track" aria-label="Previous stories"><svg class="flip" aria-hidden="true"><use href="#i-arrow-r"/></svg></button>
+          <button type="button" class="car-btn" data-dir="1" aria-controls="stories-track" aria-label="Next stories"><svg aria-hidden="true"><use href="#i-arrow-r"/></svg></button>
+        </div>
+      </div>
+      <ul class="stories-track" id="stories-track">
+        <li class="story">
+          <div class="story-art art-1" aria-hidden="true"><span class="play"><svg><use href="#i-play"/></svg></span><span class="story-dur">6:24</span></div>
+          <p class="tag tag-dark">Video</p>
+          <h3 class="story-title"><button type="button" class="stretch" data-read="st1">Halvard on moving a money fund onchain</button></h3>
+          <p class="story-meta">Halvard Asset Management</p>
+        </li>
+        <li class="story">
+          <div class="story-art art-2" aria-hidden="true"><span class="play"><svg><use href="#i-play"/></svg></span><span class="story-dur">4:51</span></div>
+          <p class="tag tag-dark">Video</p>
+          <h3 class="story-title"><button type="button" class="stretch" data-read="st2">How Ostrine Pay proves its reserves every hour</button></h3>
+          <p class="story-meta">Ostrine Pay</p>
+        </li>
+        <li class="story">
+          <div class="story-art art-3" aria-hidden="true"><span class="play"><svg><use href="#i-play"/></svg></span><span class="story-dur">5:37</span></div>
+          <p class="tag tag-dark">Video</p>
+          <h3 class="story-title"><button type="button" class="stretch" data-read="st3">Lumora Exchange on fair marks in a fast market</button></h3>
+          <p class="story-meta">Lumora Exchange</p>
+        </li>
+        <li class="story">
+          <div class="story-art art-4" aria-hidden="true"><span class="play"><svg><use href="#i-play"/></svg></span><span class="story-dur">7:02</span></div>
+          <p class="tag tag-dark">Video</p>
+          <h3 class="story-title"><button type="button" class="stretch" data-read="st4">Brisande Mutual on parametric cover at field scale</button></h3>
+          <p class="story-meta">Brisande Mutual</p>
+        </li>
+        <li class="story">
+          <div class="story-art art-5" aria-hidden="true"><span class="play"><svg><use href="#i-play"/></svg></span><span class="story-dur">3:58</span></div>
+          <p class="tag tag-dark">Video</p>
+          <h3 class="story-title"><button type="button" class="stretch" data-read="st5">Marrowby Clearing on settlement that never closes</button></h3>
+          <p class="story-meta">Marrowby Clearing</p>
+        </li>
+        <li class="story">
+          <div class="story-art art-6" aria-hidden="true"><span class="play"><svg><use href="#i-play"/></svg></span><span class="story-dur">5:15</span></div>
+          <p class="tag tag-dark">Video</p>
+          <h3 class="story-title"><button type="button" class="stretch" data-read="st6">Corvant on liquidations without the panic</button></h3>
+          <p class="story-meta">Corvant</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section news" id="news" data-theme="white" aria-labelledby="news-title">
+    <div class="wrap">
+      <div class="section-head section-head-split">
+        <div>
+          <p class="eyebrow">Newsroom</p>
+          <h2 id="news-title">Latest from Plumbline</h2>
+        </div>
+        <button type="button" class="btn btn-outline" id="news-toggle" aria-expanded="false" aria-controls="news-grid">View all</button>
+      </div>
+      <ul class="news-grid" id="news-grid">
+        <li class="news-card reveal">
+          <p class="news-meta"><time datetime="2026-11-18">Nov 18, 2026</time><span>Press</span></p>
+          <h3><button type="button" class="stretch" data-read="n1">Plumbline Foundation opens node operator applications for 2027</button></h3>
+          <p>Independent teams can apply to run Feeds and Relay nodes. Applications close January 15.</p>
+        </li>
+        <li class="news-card reveal">
+          <p class="news-meta"><time datetime="2026-11-12">Nov 12, 2026</time><span>Release</span></p>
+          <h3><button type="button" class="stretch" data-read="n2">Relay reaches 52 networks</button></h3>
+          <p>Six new networks, plus per-asset limits that teams can tune without redeploying.</p>
+        </li>
+        <li class="news-card reveal">
+          <p class="news-meta"><time datetime="2026-11-06">Nov 6, 2026</time><span>Research</span></p>
+          <h3><button type="button" class="stretch" data-read="n3">A field guide to oracle failure modes</button></h3>
+          <p>Twelve ways data goes wrong onchain, and the controls that catch each one.</p>
+        </li>
+        <li class="news-card reveal">
+          <p class="news-meta"><time datetime="2026-10-30">Oct 30, 2026</time><span>Ecosystem</span></p>
+          <h3><button type="button" class="stretch" data-read="n4">Kettlewick &amp; Co. moves supplier payouts to Relay</button></h3>
+          <p>Payouts in 31 currencies now settle in under a minute.</p>
+        </li>
+        <li class="news-card reveal">
+          <p class="news-meta"><time datetime="2026-10-22">Oct 22, 2026</time><span>Release</span></p>
+          <h3><button type="button" class="stretch" data-read="n5">Attest adds bank-account reserve sources</button></h3>
+          <p>Issuers can now prove cash reserves held at banks, not just onchain.</p>
+        </li>
+        <li class="news-card reveal">
+          <p class="news-meta"><time datetime="2026-10-15">Oct 15, 2026</time><span>Event</span></p>
+          <h3><button type="button" class="stretch" data-read="n6">Recap: Verified Data Day in Lisbon</button></h3>
+          <p>Talks on proof of reserves, rate limits and the next five years of the network.</p>
+        </li>
+        <li class="news-card news-more" hidden>
+          <p class="news-meta"><time datetime="2026-09-30">Sep 30, 2026</time><span>Research</span></p>
+          <h3><button type="button" class="stretch" data-read="n7">What 40 billion rounds taught us about heartbeats</button></h3>
+          <p>Longer heartbeats save fees, until they don't. Our data on where the line sits.</p>
+        </li>
+        <li class="news-card news-more" hidden>
+          <p class="news-meta"><time datetime="2026-09-18">Sep 18, 2026</time><span>Release</span></p>
+          <h3><button type="button" class="stretch" data-read="n8">Compute jobs can now read private inputs</button></h3>
+          <p>Jobs can use confidential data and publish only the signed result.</p>
+        </li>
+        <li class="news-card news-more" hidden>
+          <p class="news-meta"><time datetime="2026-09-04">Sep 4, 2026</time><span>Press</span></p>
+          <h3><button type="button" class="stretch" data-read="n9">Plumbline publishes its third independent security review</button></h3>
+          <p>Two medium findings, both fixed before publication.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section cta" id="contact" data-theme="blue" aria-labelledby="cta-title">
+    <div class="wrap cta-grid">
+      <div>
+        <h2 id="cta-title">Put verified data behind your next product.</h2>
+        <p class="lede">Our solutions engineers have shipped integrations for banks, exchanges and insurers. Tell us what you're building and we'll map the fastest path to production.</p>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn btn-white" data-open="contact-dialog">Talk to an expert</button>
+        <button type="button" class="btn btn-ghost" data-open="quickstart-dialog">Read the docs</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section newsletter" id="newsletter" data-theme="light" aria-labelledby="nl-title">
+    <div class="wrap nl-grid">
+      <div>
+        <p class="eyebrow">Newsletter</p>
+        <h2 id="nl-title">Research and release notes, once a month.</h2>
+        <p class="lede">New networks, incident reports and the occasional deep dive. No hype, and one click to leave.</p>
+      </div>
+      <form class="nl-form" id="nl-form" novalidate>
+        <div class="field">
+          <label for="nl-email">Work email</label>
+          <div class="nl-row">
+            <input id="nl-email" name="email" type="email" autocomplete="email" required placeholder="name@company.com" aria-describedby="nl-email-err">
+            <button type="submit" class="btn btn-blue">Subscribe</button>
+          </div>
+          <p class="field-error" id="nl-email-err" hidden></p>
+        </div>
+        <div class="check">
+          <input id="nl-consent" name="consent" type="checkbox" required aria-describedby="nl-consent-err">
+          <label for="nl-consent">I agree to receive a monthly email from Plumbline. I can unsubscribe at any time.</label>
+        </div>
+        <p class="field-error" id="nl-consent-err" hidden></p>
+        <div class="form-success" id="nl-success" role="status" hidden>
+          <p class="success-title"><svg aria-hidden="true"><use href="#i-check"/></svg>You're on the list.</p>
+          <p>We'd send a confirmation to <strong id="nl-success-email">your inbox</strong>. This is a portfolio demo, so nothing was sent.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" data-theme="dark">
+  <div class="wrap footer-top">
+    <div class="footer-brand">
+      <a class="logo" href="#top" aria-label="Plumbline, back to top">
+        <svg class="logo-mark" viewBox="0 0 28 28" aria-hidden="true"><path d="M14 1.5V8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="14" cy="9.7" r="1.9" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M14 12.2h-3.4L7.6 15.8 14 26.8z" fill="currentColor"/><path d="M14 12.2h3.4l3 3.6L14 26.8z" fill="#D7FF3A"/></svg>
+        <span class="logo-word">Plumbline</span>
+      </a>
+      <p>The verified-data network for onchain finance. Signed values, limited messages and reserves anyone can check.</p>
+      <a class="btn btn-lime" href="#developers">Start building</a>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <div class="fcol">
+        <h2 class="fhead">Platform</h2>
+        <ul>
+          <li><a href="#platform">Feeds</a></li>
+          <li><a href="#platform">Relay</a></li>
+          <li><a href="#platform">Attest</a></li>
+          <li><a href="#platform">Compute</a></li>
+          <li><a href="#network">Feed monitor</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h2 class="fhead">Solutions</h2>
+        <ul>
+          <li><a href="#use-cases" data-tab="stablecoins">Stablecoins</a></li>
+          <li><a href="#use-cases" data-tab="funds">Tokenized funds</a></li>
+          <li><a href="#use-cases" data-tab="payments">Payments</a></li>
+          <li><a href="#use-cases" data-tab="lending">Lending</a></li>
+          <li><a href="#use-cases" data-tab="derivatives">Derivatives</a></li>
+          <li><a href="#use-cases" data-tab="insurance">Insurance</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h2 class="fhead">Developers</h2>
+        <ul>
+          <li><button type="button" data-open="quickstart-dialog">Quickstart</button></li>
+          <li><a href="#developers">Code samples</a></li>
+          <li><button type="button" data-open="quickstart-dialog">Testnets</button></li>
+          <li><a href="#why">Security model</a></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h2 class="fhead">Community</h2>
+        <ul>
+          <li><button type="button" data-read="n1">Node operators</button></li>
+          <li><a href="#announcements">Events</a></li>
+          <li><a href="#newsletter">Newsletter</a></li>
+          <li><button type="button" data-open="notice-dialog" data-notice="Forum">Forum</button></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h2 class="fhead">Resources</h2>
+        <ul>
+          <li><a href="#stories">Customer stories</a></li>
+          <li><a href="#news">Newsroom</a></li>
+          <li><button type="button" data-read="n3">Research</button></li>
+          <li><button type="button" data-open="notice-dialog" data-notice="Brand kit">Brand kit</button></li>
+        </ul>
+      </div>
+      <div class="fcol">
+        <h2 class="fhead">Company</h2>
+        <ul>
+          <li><button type="button" data-open="notice-dialog" data-notice="About">About</button></li>
+          <li><button type="button" data-open="notice-dialog" data-notice="Careers">Careers</button></li>
+          <li><button type="button" data-read="n9">Security reviews</button></li>
+          <li><button type="button" data-open="contact-dialog">Contact</button></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="wrap footer-bottom">
+    <p class="copyright">© 2026 Plumbline Foundation</p>
+    <ul class="legal">
+      <li><button type="button" data-open="notice-dialog" data-notice="Terms of use">Terms</button></li>
+      <li><button type="button" data-open="notice-dialog" data-notice="Privacy">Privacy</button></li>
+      <li><button type="button" data-open="notice-dialog" data-notice="Cookies">Cookies</button></li>
+      <li><button type="button" data-open="notice-dialog" data-notice="Disclosures">Disclosures</button></li>
+    </ul>
+    <ul class="social">
+      <li><button type="button" data-open="notice-dialog" data-notice="X">X</button></li>
+      <li><button type="button" data-open="notice-dialog" data-notice="LinkedIn">LinkedIn</button></li>
+      <li><button type="button" data-open="notice-dialog" data-notice="YouTube">YouTube</button></li>
+      <li><button type="button" data-open="notice-dialog" data-notice="Discord">Discord</button></li>
+      <li><button type="button" data-open="notice-dialog" data-notice="GitHub">GitHub</button></li>
+    </ul>
+  </div>
+  <div class="wrap footer-credit">
+    <p>Portfolio concept by <a href="../../">Cameron Carrillo</a>. Plumbline is a fictional company.</p>
+  </div>
+</footer>
+
+<dialog class="dialog dialog-search" id="search-dialog" aria-labelledby="search-title">
+  <div class="dialog-head">
+    <h2 class="dialog-title" id="search-title">Search Plumbline</h2>
+    <button type="button" class="dialog-close" data-close aria-label="Close search"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+  </div>
+  <div class="search-box">
+    <svg aria-hidden="true"><use href="#i-search"/></svg>
+    <label class="sr-only" for="search-input">Search this site</label>
+    <input id="search-input" type="search" autocomplete="off" placeholder="Try “reserves” or “limits”" aria-controls="search-results">
+  </div>
+  <ul class="search-results" id="search-results">
+    <li><a href="#platform" data-k="platform feeds relay attest compute products overview">Platform overview<span>Feeds, Relay, Attest and Compute</span></a></li>
+    <li><a href="#use-cases" data-tab="stablecoins" data-k="stablecoins reserves mint proof attest">Stablecoins<span>Proof of reserves and mint limits</span></a></li>
+    <li><a href="#use-cases" data-tab="funds" data-k="tokenized funds nav asset managers">Tokenized funds<span>One signed NAV on every network</span></a></li>
+    <li><a href="#use-cases" data-tab="payments" data-k="payments fx settlement banks relay">Payments<span>Settlement across bank ledgers and networks</span></a></li>
+    <li><a href="#use-cases" data-tab="lending" data-k="lending collateral liquidations circuit breaker">Lending<span>Collateral values and circuit breakers</span></a></li>
+    <li><a href="#use-cases" data-tab="derivatives" data-k="derivatives streams marks settlement exchanges latency">Derivatives<span>Low-latency streams for marks and settlement</span></a></li>
+    <li><a href="#use-cases" data-tab="insurance" data-k="insurance parametric weather index claims">Insurance<span>Parametric triggers from weather indices</span></a></li>
+    <li><a href="#why" data-k="security audit limits rate risk network why">Security model<span>Auditable data and rate-limited messaging</span></a></li>
+    <li><a href="#developers" data-k="developers sdk code solidity typescript docs quickstart">Developers<span>SDKs and code samples</span></a></li>
+    <li><a href="#network" data-k="network monitor heartbeat deviation feeds status">Feed monitor<span>Heartbeats, deviation and sources</span></a></li>
+    <li><a href="#stories" data-k="stories customers video case studies">Customer stories<span>Six teams building on Plumbline</span></a></li>
+    <li><a href="#news" data-k="news newsroom research press releases">Newsroom<span>Releases, research and press</span></a></li>
+    <li><a href="#newsletter" data-k="newsletter email subscribe">Newsletter<span>Monthly research and release notes</span></a></li>
+  </ul>
+  <p class="search-empty" id="search-empty" hidden>No matches. Try “feeds”, “stories” or “newsletter”.</p>
+</dialog>
+
+<dialog class="dialog" id="contact-dialog" aria-labelledby="contact-title">
+  <div class="dialog-head">
+    <h2 class="dialog-title" id="contact-title">Talk to an expert</h2>
+    <button type="button" class="dialog-close" data-close aria-label="Close contact form"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+  </div>
+  <form class="contact-form" id="contact-form" novalidate>
+    <p class="dialog-intro">Tell us about your product and a solutions engineer will reply within one business day.</p>
+    <div class="form-grid">
+      <div class="field">
+        <label for="c-name">Full name</label>
+        <input id="c-name" name="name" type="text" autocomplete="name" required aria-describedby="c-name-err">
+        <p class="field-error" id="c-name-err" hidden></p>
+      </div>
+      <div class="field">
+        <label for="c-email">Work email</label>
+        <input id="c-email" name="email" type="email" autocomplete="email" required aria-describedby="c-email-err">
+        <p class="field-error" id="c-email-err" hidden></p>
+      </div>
+      <div class="field">
+        <label for="c-company">Company</label>
+        <input id="c-company" name="company" type="text" autocomplete="organization" required aria-describedby="c-company-err">
+        <p class="field-error" id="c-company-err" hidden></p>
+      </div>
+      <div class="field">
+        <label for="c-interest">Interested in</label>
+        <select id="c-interest" name="interest" required aria-describedby="c-interest-err">
+          <option value="" selected disabled>Choose one</option>
+          <option value="feeds">Data feeds</option>
+          <option value="relay">Cross-network messaging</option>
+          <option value="attest">Proof of reserves</option>
+          <option value="compute">Offchain compute</option>
+          <option value="other">Something else</option>
+        </select>
+        <p class="field-error" id="c-interest-err" hidden></p>
+      </div>
+      <div class="field field-wide">
+        <label for="c-message">What are you building? <span class="optional">Optional</span></label>
+        <textarea id="c-message" name="message" rows="4" maxlength="800"></textarea>
+      </div>
+    </div>
+    <div class="form-foot">
+      <button type="submit" class="btn btn-blue">Send message</button>
+      <p class="form-note">Demo form. Nothing is sent anywhere.</p>
+    </div>
+  </form>
+  <div class="form-success form-success-lg" id="contact-success" role="status" hidden>
+    <p class="success-title"><svg aria-hidden="true"><use href="#i-check"/></svg>Thanks, <span id="contact-success-name">there</span>.</p>
+    <p>Your reference is <strong id="contact-ref">PL-000000</strong>. A solutions engineer would reply within one business day. This is a portfolio demo, so nothing was sent.</p>
+    <button type="button" class="btn btn-blue" data-close>Close</button>
+  </div>
+</dialog>
+
+<dialog class="dialog" id="quickstart-dialog" aria-labelledby="qs-title">
+  <div class="dialog-head">
+    <h2 class="dialog-title" id="qs-title">Quickstart</h2>
+    <button type="button" class="dialog-close" data-close aria-label="Close quickstart"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+  </div>
+  <ol class="qs-steps">
+    <li>
+      <h3>Install the SDK</h3>
+      <pre class="qs-code"><code>npm install @plumbline/sdk</code></pre>
+    </li>
+    <li>
+      <h3>Point it at a testnet</h3>
+      <p>Testnet feeds are free and mirror mainnet sources on a delay.</p>
+      <pre class="qs-code"><code>PLUMB_NETWORK=testnet</code></pre>
+    </li>
+    <li>
+      <h3>Read and verify a round</h3>
+      <pre class="qs-code"><code>const round = await plumb.feeds.latest("EUR/USD");
+await plumb.verify(round);</code></pre>
+    </li>
+  </ol>
+  <p class="dialog-note">The full documentation lives in the product. This concept site includes the quickstart only.</p>
+  <div class="dialog-actions">
+    <button type="button" class="btn btn-blue" data-open="contact-dialog">Talk to an engineer</button>
+    <button type="button" class="btn btn-outline" data-close>Done</button>
+  </div>
+</dialog>
+
+<dialog class="dialog dialog-read" id="read-dialog" aria-labelledby="read-title">
+  <div class="dialog-head">
+    <p class="tag" id="read-kicker">News</p>
+    <button type="button" class="dialog-close" data-close aria-label="Close"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+  </div>
+  <h2 class="read-title" id="read-title">Story</h2>
+  <p class="read-meta" id="read-meta">Plumbline</p>
+  <div class="read-body" id="read-body"></div>
+</dialog>
+
+<dialog class="dialog dialog-sm" id="notice-dialog" aria-labelledby="notice-title">
+  <div class="dialog-head">
+    <h2 class="dialog-title" id="notice-title">Notice</h2>
+    <button type="button" class="dialog-close" data-close aria-label="Close notice"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+  </div>
+  <p>Plumbline is a fictional company made for Cameron Carrillo's portfolio, so there's nothing real behind this link: no terms, policies, accounts or job openings.</p>
+  <div class="dialog-actions">
+    <a class="btn btn-blue" href="../../">Back to the portfolio</a>
+    <button type="button" class="btn btn-outline" data-close>Keep browsing</button>
+  </div>
+</dialog>
+</body>
+</html>
