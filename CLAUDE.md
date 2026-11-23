@@ -38,6 +38,53 @@ Tools may borrow a reference tool's interaction model (for example, "press space
 - Websites feel like a real business: 4–7 sections, working anchor navigation, a working mobile menu, and forms that validate in the browser and show a success state. Forms never actually submit anywhere.
 - Tools work entirely in the browser and open with useful defaults rather than an empty screen. Offer copy-to-clipboard and file downloads (PNG, SVG, CSS) where they make sense.
 
+## Cutaway library (`tools/cutaways/`)
+
+A library of animated cutaway illustrations that a service business could drop into its own website. It takes the house and building cutaways on the LAPS HVAC site (`sites/laps-hvac/index.html`, the `.dia` diagrams) and applies the idea to other careers. Study those diagrams for the look:
+
+- flat technical cross-sections with 2–3 px outlines
+- parts labeled in small uppercase text
+- dashed lines that flow to show water, power or air moving
+- small worker figures with a moving arm
+
+Each animation is one self-contained SVG file, `tools/cutaways/anim/<slug>.svg`:
+
+- **Format:**
+  - `viewBox="0 0 600 420"`, a transparent background and under 40 KB.
+  - No scripts, external files or web fonts. Labels use a system font stack.
+- **Accessibility:** `role="img"`, a `<title>`, and a one-sentence `<desc>` that says what moves.
+- **Colors:**
+  - Every color comes from CSS custom properties declared at the top of the file's `<style>`: `--ink` (outlines), `--fill` (surfaces), `--accent` (the main thing that moves), `--accent-2` (a second flow) and `--label` (text).
+  - The defaults must read well on both white and near-black backgrounds.
+- **Motion:**
+  - Use CSS keyframes or SMIL only, so the file still moves when a site uses it as `<img src>`.
+  - Loop seamlessly in 4 to 12 seconds.
+  - Inside `@media (prefers-reduced-motion: reduce)`, stop all motion and show a frame that still explains the idea.
+- **Content:**
+  - No logos, brand names or real products.
+  - Keep the set consistent: the same line weights, label style and worker figure in every file.
+
+`tools/cutaways/index.html` is the gallery:
+
+- **Cards:** one card per animation, showing the animation, the career, and one line on where it fits on a site (hero, services, or a how-it-works section).
+- **Pausing:**
+  - Fetch each SVG file and place it inline, so the page can pause it.
+  - Give each card a play/pause button, and add one that pauses everything.
+  - Pause animations that are scrolled out of view.
+- **Recoloring:** an accent color picker with a few presets that recolors every animation live.
+- **Export:** "Copy SVG" and "Download .svg" on each card, with the chosen colors written into the file.
+- **Look:** its own visual identity, distinct from the other portfolio items. Like everything else, it works from 360 px to 1440 px.
+
+Build and commit rules:
+
+- Commit each animation on its own as soon as it's finished (`Add <career> cutaway`), so finished work survives if the run ends early.
+- Add the catalog entry (`"type": "tool"`), the thumbnail and the BACKLOG tick once the gallery works.
+- If the run can't finish every animation a BACKLOG line asks for:
+  - Open the pull request with what's done.
+  - Add a new unchecked BACKLOG line that lists the rest.
+- Later BACKLOG lines may add more animations to this library. Add them to the same gallery instead of making a new tool.
+- Before each commit, also check that every SVG in `anim/` parses as XML, contains no `<script>`, and stays under 40 KB.
+
 ## Variety rules for new backlog ideas
 
 When the backlog runs low, add ideas to the bottom of `BACKLOG.md` following these rules:
